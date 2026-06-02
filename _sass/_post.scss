@@ -1,0 +1,49 @@
+.post__container {
+  max-width: $content;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+.post__content {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  overflow-wrap: break-word;
+  h2 { margin-top: 1.8em; }
+  h3 { margin-top: 1.5em; }
+  img { border-radius: $radius-sm; margin: 1.2em 0; }
+  > p:first-of-type { font-size: 1.1rem; color: $ink; }
+}
+
+.post__tags { margin: 2.5rem 0 1rem; }
+.post__nav {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin: 1.5rem 0; padding: 1.2rem 0; border-top: 1px solid $line; border-bottom: 1px solid $line;
+  font-size: .9rem; font-weight: 500;
+  a { color: $body; }
+  a:hover { color: $brand; text-decoration: none; }
+  .post__nav-next { text-align: right; margin-left: auto; }
+}
+
+.comments { margin-top: 2.5rem; }
+
+// archive page
+.archive-year {
+  font-family: $serif;
+  font-size: 1.6rem; color: $ink;
+  margin: 2rem 0 .6rem; padding-bottom: .3rem; border-bottom: 2px solid $line;
+}
+.archive-list { list-style: none; padding: 0; margin: 0; }
+.archive-list li {
+  display: flex; gap: 1rem; padding: .5rem 0; align-items: baseline;
+  border-bottom: 1px dashed $line;
+}
+.archive-list .archive-date { color: $muted; font-size: .82rem; min-width: 56px; font-variant-numeric: tabular-nums; }
+.archive-list a { color: $ink; font-weight: 500; }
+.archive-list a:hover { color: $brand; }
+
+// tag / category index sections
+.taxo-group { margin-bottom: 2.5rem; scroll-margin-top: 90px; }
+.taxo-group__head {
+  font-family: $serif; font-size: 1.4rem; color: $ink;
+  margin: 0 0 .4rem; padding-bottom: .3rem; border-bottom: 2px solid $brand; display: inline-block;
+}
+.taxo-count { color: $muted; font-size: .9rem; font-family: $sans; }

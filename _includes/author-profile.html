@@ -1,0 +1,33 @@
+<aside class="profile">
+  <div class="profile__card">
+    <img class="profile__avatar" src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+    <h1 class="profile__name">{{ site.author.name }}</h1>
+    <p class="profile__korean">{{ site.author.korean_name }}</p>
+    <p class="profile__title">{{ site.author.title }}</p>
+    <p class="profile__meta">{{ site.author.affiliation }}<br>{{ site.author.location }}</p>
+
+    <ul class="profile__social">
+      {%- if site.social.github and site.social.github != "" -%}
+      <li><a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener" aria-label="GitHub">{% include icons/github.svg %}</a></li>
+      {%- endif -%}
+      {%- if site.social.scholar and site.social.scholar != "" -%}
+      <li><a href="{{ site.social.scholar }}" target="_blank" rel="noopener" aria-label="Google Scholar">{% include icons/scholar.svg %}</a></li>
+      {%- endif -%}
+      {%- if site.social.linkedin and site.social.linkedin != "" -%}
+      <li><a href="{{ site.social.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">{% include icons/linkedin.svg %}</a></li>
+      {%- endif -%}
+      {%- if site.social.email and site.social.email != "" -%}
+      <li><a href="mailto:{{ site.social.email }}" aria-label="Email">{% include icons/mail.svg %}</a></li>
+      {%- endif -%}
+    </ul>
+
+    <div class="profile__actions">
+      {%- if site.social.cv and site.social.cv != "" -%}
+      <a class="btn btn--primary" href="{{ site.social.cv }}" target="_blank" rel="noopener">Curriculum Vitae</a>
+      {%- endif -%}
+      {%- if site.social.portfolio and site.social.portfolio != "" -%}
+      <a class="btn btn--ghost" href="{{ site.social.portfolio }}" target="_blank" rel="noopener">Portfolio</a>
+      {%- endif -%}
+    </div>
+  </div>
+</aside>

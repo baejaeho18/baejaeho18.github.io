@@ -1,22 +1,23 @@
 source 'https://rubygems.org'
 
-# Hello! This is where you manage which Jekyll version is used to run.
-# When you want to use a different version, change it below, save the
-# file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
-#
-#     bundle exec jekyll serve
-#
-# This will help ensure the proper Jekyll version is running.
-# Happy Jekylling!
-# gem "jekyll", "~> 3.9"
+# GitHub Pages builds this site in "safe mode" using the github-pages gem,
+# which pins Jekyll and the set of allowed plugins. Keep this gem so that the
+# local build matches what GitHub Pages produces.
+gem 'github-pages', group: :jekyll_plugins
 
+# Plugins also listed in _config.yml (github-pages already bundles these,
+# listed here for clarity / local dev).
 group :jekyll_plugins do
-  gem 'github-pages'
+  gem 'jekyll-feed'
+  gem 'jekyll-seo-tag'
+  gem 'jekyll-sitemap'
+  gem 'jekyll-paginate'
   gem 'jekyll-include-cache'
-  gem 'jekyll-compose'
+  gem 'jekyll-redirect-from'
+  gem 'jemoji'
 end
 
-gem 'wdm' if Gem.win_platform?
-gem 'tzinfo-data' if Gem.win_platform?
-
-gem "webrick", "~> 1.7"
+# Windows / JRuby support
+gem 'wdm', '~> 0.1.1', platforms: [:mingw, :x64_mingw, :mswin]
+gem 'tzinfo-data', platforms: [:mingw, :x64_mingw, :mswin, :jruby]
+gem 'webrick', '~> 1.8'

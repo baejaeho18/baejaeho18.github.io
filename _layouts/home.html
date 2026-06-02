@@ -1,6 +1,68 @@
 ---
-# Copyright (c) 2018 Florian Klampfer <https://qwtel.com/>
-layout: welcome
+layout: default
 ---
+{%- assign cv = site.data.cv -%}
+<div class="academic">
+  {% include author-profile.html %}
 
-{{ content }}
+  <div class="academic__main">
+    <!-- About -->
+    <section class="section" id="about">
+      <h2 class="section__title">About</h2>
+      {%- for p in cv.about -%}
+      <p class="lead">{{ p | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+      {%- endfor -%}
+
+      {%- if cv.interests and cv.interests.size > 0 -%}
+      <div class="chips">
+        {%- for it in cv.interests -%}<span class="chip">{{ it }}</span>{%- endfor -%}
+      </div>
+      {%- endif -%}
+    </section>
+
+    <!-- Education -->
+    <section class="section" id="education">
+      <h2 class="section__title">Education</h2>
+      <ul class="timeline">
+        {%- for ed in cv.education -%}
+        <li class="timeline__item">
+          <div class="timeline__date">{{ ed.start }} – {{ ed.end }}</div>
+          <div class="timeline__body">
+            <h3 class="timeline__head">{{ ed.degree }}</h3>
+            <p class="timeline__sub">{{ ed.institution }}{% if ed.location %} · {{ ed.location }}{% endif %}</p>
+            {% if ed.note and ed.note != "" %}<p class="timeline__note">{{ ed.note }}</p>{% endif %}
+          </div>
+        </li>
+        {%- endfor -%}
+      </ul>
+    </section>
+
+    <!-- Selected Publications -->
+    <section class="section" id="selected-publications">
+      <h2 class="section__title">Selected Publications <a class="section__more" href="{{ '/publications/' | relative_url }}">all →</a></h2>
+      <ol class="pub-list">
+        {%- for pub in cv.publications limit: 3 -%}
+        <li class="pub">
+          <p class="pub__title">
+            {%- if pub.url and pub.url != "" -%}<a href="{{ pub.url }}" target="_blank" rel="noopener">{{ pub.title }}</a>{%- else -%}{{ pub.title }}{%- endif -%}
+          </p>
+          <p class="pub__meta">{{ pub.authors }} · <em>{{ pub.venue }}</em>{% if pub.award %} · <span class="pub__award">🏆 {{ pub.award }}</span>{% endif %}</p>
+        </li>
+        {%- endfor -%}
+      </ol>
+    </section>
+
+    <!-- Quick links -->
+    <section class="section" id="explore">
+      <h2 class="section__title">Explore</h2>
+      <div class="card-grid">
+        <a class="link-card" href="{{ '/experience/' | relative_url }}"><h3>Experience</h3><p>Research, teaching & service</p></a>
+        <a class="link-card" href="{{ '/projects/' | relative_url }}"><h3>Projects</h3><p>Things I have built</p></a>
+        <a class="link-card" href="{{ '/awards/' | relative_url }}"><h3>Awards</h3><p>Honors & recognition</p></a>
+        <a class="link-card" href="{{ '/blog/' | relative_url }}"><h3>Blog</h3><p>기록하며 배우는 공간</p></a>
+      </div>
+    </section>
+
+    {{ content }}
+  </div>
+</div>

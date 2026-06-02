@@ -1,0 +1,25 @@
+<nav class="navbar {% if page.hero %}navbar--transparent{% endif %}" id="navbar">
+  <div class="navbar__inner">
+    <a class="navbar__brand" href="{{ '/' | relative_url }}">
+      {{ site.title }}
+    </a>
+
+    <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="navbar__menu" id="navMenu">
+      {%- assign cur = page.url -%}
+      {%- for item in site.data.navigation.main -%}
+        {%- assign link = item.url | relative_url -%}
+        {%- assign active = false -%}
+        {%- if item.url == "/" and cur == "/" -%}{%- assign active = true -%}{%- endif -%}
+        {%- if item.url != "/" and cur contains item.url -%}{%- assign active = true -%}{%- endif -%}
+        <li><a href="{{ link }}" class="{% if active %}is-active{% endif %}">{{ item.title }}</a></li>
+      {%- endfor -%}
+      {%- if site.social.cv and site.social.cv != "" -%}
+        <li><a href="{{ site.social.cv }}" class="navbar__cv" target="_blank" rel="noopener">CV</a></li>
+      {%- endif -%}
+    </ul>
+  </div>
+</nav>

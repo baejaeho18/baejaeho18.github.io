@@ -1,0 +1,37 @@
+<aside class="blog-sidebar">
+  <div class="widget">
+    <h3 class="widget__title">Categories</h3>
+    <ul class="widget__list">
+      {%- assign cats = site.categories | sort -%}
+      {%- for cat in cats -%}
+      <li><a href="{{ '/blog/categories/#' | append: cat[0] | relative_url }}">{{ cat[0] }}</a> <span>{{ cat[1].size }}</span></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+
+  <div class="widget">
+    <h3 class="widget__title">Tags</h3>
+    <div class="widget__tags">
+      {%- assign tags = site.tags | sort -%}
+      {%- for tag in tags -%}
+      <a class="tag-chip" href="{{ '/blog/tags/#' | append: tag[0] | relative_url }}">{{ tag[0] }} <span>{{ tag[1].size }}</span></a>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="widget">
+    <h3 class="widget__title">Recent posts</h3>
+    <ul class="widget__list widget__list--recent">
+      {%- for post in site.posts limit: 5 -%}
+      <li><a href="{{ post.url | relative_url }}">{{ post.title | remove: '"' }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+
+  <div class="widget">
+    <h3 class="widget__title">Archive</h3>
+    <ul class="widget__list">
+      <li><a href="{{ '/blog/archive/' | relative_url }}">Browse by year →</a></li>
+    </ul>
+  </div>
+</aside>

@@ -1,0 +1,181 @@
+# ──────────────────────────────────────────────────────────────────────────
+#  Academic CV content.  Edit this file to update the homepage & CV pages.
+#  (Sourced from github.com/baejaeho18 — please verify & extend.)
+# ──────────────────────────────────────────────────────────────────────────
+
+# Short "about" paragraphs shown on the homepage.
+about:
+  - >-
+    I am **Jaeho Bae (배재호)**, an M.S. student in Computer Science and
+    Engineering at **UNIST**. I love reading, learning, and programming.
+  - >-
+    My research interests center on **software security** — security
+    vulnerability detection, bytecode analysis, and the application of
+    **generative AI** to software engineering. I previously studied AI and
+    Computer Science & Engineering at **Handong Global University**.
+
+# Research interests (chips on the homepage)
+interests:
+  - Software Security
+  - Vulnerability Detection
+  - Bytecode Analysis
+  - Generative AI for SE
+  - Computer Systems
+
+# ── Education ───────────────────────────────────────────────────────────────
+education:
+  - degree: M.S. in Computer Science and Engineering
+    institution: UNIST (Ulsan National Institute of Science and Technology)
+    location: Ulsan, South Korea
+    start: "2025.03"
+    end: "Present"
+    note: ""
+  - degree: B.S. in Artificial Intelligence · Computer Science and Engineering
+    institution: Handong Global University
+    location: Pohang, South Korea
+    start: "2017.03"
+    end: "2024.08"
+    note: ""
+
+# ── Experience (research / professional / service / military) ────────────────
+experience:
+  - role: Research Intern
+    org: WebSec — Web Security Lab, UNIST
+    url: "https://websec-lab.github.io/"
+    start: "2024.09"
+    end: "2025.02"
+    type: research
+    summary: Web security research.
+  - role: Undergraduate Research Student
+    org: ISEL — Intelligent Software Engineering Lab, HGU
+    url: "https://isel.handong.edu/"
+    start: "2022.06"
+    end: "2023.12"
+    type: research
+    summary: Research on security vulnerability detection via bytecode analysis.
+  - role: Situation Control Unit · CERT (Computer Emergency Response Team)
+    org: Navy Cyber Operation Center
+    url: ""
+    start: "2019.12"
+    end: "2021.06"
+    type: military
+    summary: Military service in a cyber response unit. Awarded as an exemplary serviceman.
+  - role: General Affairs
+    org: Linux Hackers Club, HGU
+    url: ""
+    start: "2021.09"
+    end: "2022.06"
+    type: service
+    summary: ""
+
+# ── Teaching ────────────────────────────────────────────────────────────────
+teaching:
+  - role: Teaching Materials Development Assistant
+    course: System Programming
+    org: Handong Global University
+    start: "2024.07"
+    end: "2024.09"
+  - role: Teaching Assistant
+    course: Introduction to Artificial Intelligence (Project)
+    org: Handong Global University
+    start: "2024.03"
+    end: "2024.06"
+  - role: Teaching Assistant
+    course: Coding Hour Mentoring
+    org: Handong Global University
+    start: "2023.03"
+    end: "2024.06"
+  - role: Teaching Assistant
+    course: Java Programming
+    org: Handong Global University
+    start: "2023.03"
+    end: "2023.12"
+  - role: Teaching Assistant
+    course: Introduction to Computer and Electronic Engineering
+    org: Handong Global University
+    start: "2022.03"
+    end: "2022.06"
+  - role: Teaching Assistant
+    course: Introduction to Philosophy
+    org: Handong Global University
+    start: "2021.06"
+    end: "2021.12"
+
+# ── Publications ─────────────────────────────────────────────────────────────
+# type: journal | conference
+publications:
+  - title: "ByCoBERT: A Bytecode Pre-trained Model based Security Vulnerability Prediction Technique"
+    title_ko: "ByCoBERT: Bytecode pre-trained 모델 기반 보안 취약점 예측 기법"
+    authors: "Jaeho Bae, et al."
+    venue: "Journal of KIISE (JOK)"
+    year: 2024
+    type: journal
+    url: ""
+  - title: "Detecting Security Vulnerabilities using GPT Models"
+    title_ko: "GPT 모델을 활용한 보안 취약점 탐색"
+    authors: "Jaeho Bae, et al."
+    venue: "KIISE Transactions on Computing Practices (KTCP), 2024"
+    year: 2024
+    type: journal
+    url: "https://www.kiise.or.kr/e_journal/2024/12/KTCP/01.pdf"
+  - title: "Survey on Security Vulnerability Detection Techniques based on Bytecode Analysis"
+    title_ko: "바이트코드 분석을 통한 보안 취약점 검출 기술 동향"
+    authors: "Jaeho Bae, et al."
+    venue: "Korea Conference on Software Engineering (KCSE 2023)"
+    year: 2023
+    type: conference
+    url: "https://github.com/baejaeho18/baejaeho18/blob/0808daa59e9299c2c497c767f10bc93b94b5b3d2/assets/%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%BD%94%EB%93%9C%20%EB%B6%84%EC%84%9D%EC%9D%84%20%ED%86%B5%ED%95%9C%20%EB%B3%B4%EC%95%88%20%EC%B7%A8%EC%95%BD%EC%A0%90%20%EA%B2%80%EC%B6%9C%20%EA%B8%B0%EC%88%A0%20%EB%8F%99%ED%96%A5.pdf"
+    award: "Outstanding Undergraduate Paper Award"
+
+# ── Projects ────────────────────────────────────────────────────────────────
+projects:
+  - name: ByCoBERT
+    description: Project-level vulnerability prediction model using BERT on bytecode.
+    tags: [Security, BERT, Bytecode]
+    url: "https://github.com/ISEL-HGU/ByCoBERT"
+  - name: VIChecker
+    description: File-level vulnerability detection tool using Generative AI in open-source projects.
+    tags: [Security, GenAI]
+    url: "https://github.com/baejaeho18/VIChecker"
+  - name: mvnCrawler
+    description: Crawler that collects open-source projects from the Maven repository for ByCoBERT.
+    tags: [Crawler, Dataset]
+    url: "https://github.com/ISEL-HGU/mvnCrawler"
+  - name: CIMS
+    description: CCTV Integrated Management System using WiFi-HaLow and a gRPC live-streaming service.
+    tags: [IoT, gRPC]
+    url: "https://github.com/baejaeho18/CIMS"
+  - name: BLAP
+    description: Budget management web app for achieving your bucket list.
+    tags: [Web]
+    url: "https://github.com/baejaeho18/BLAP"
+
+# ── Awards & Honors ──────────────────────────────────────────────────────────
+awards:
+  - title: TOPCIT Regular Assessment — Grand Prize (최우수상)
+    org: Handong Global University
+    year: 2024
+  - title: Coding Hour — Outstanding TA (우수TA)
+    org: Handong Global University
+    year: 2023
+  - title: Capstone Festival 'Capstone 2' — Excellence Award (우수상)
+    org: Handong Global University
+    year: 2023
+  - title: Outstanding Undergraduate Paper Award (학부생부문 우수논문상)
+    org: Korea Conference on Software Engineering (KCSE 2023)
+    year: 2023
+  - title: Exemplary Serviceman (우수 장병)
+    org: Navy Cyber Operation Center · CERT
+    year: 2021
+  - title: Freshman Coding Competition — Bronze (신입생부문 동상)
+    org: Handong Global University
+    year: 2017
+
+# ── Skills ──────────────────────────────────────────────────────────────────
+skills:
+  - category: Languages
+    items: [Java, Python, C/C++, JavaScript]
+  - category: Research
+    items: [Vulnerability Detection, Bytecode Analysis, NLP/LLMs, Software Engineering]
+  - category: Tools
+    items: [PyTorch, Git, Linux, gRPC, Spring]

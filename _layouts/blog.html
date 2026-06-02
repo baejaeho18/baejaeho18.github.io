@@ -1,34 +1,30 @@
 ---
-# Copyright (c) 2018 Florian Klampfer <https://qwtel.com/>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-layout: base
+layout: default
+hero: true
 ---
+{% include hero.html title=page.title subtitle=site.blog.description image=site.blog.cover %}
 
-{% assign plugins = site.plugins | default:site.gems %}
+<div class="blog">
+  <div class="blog__container">
+    <div class="blog__list">
+      {%- assign posts = paginator.posts | default: site.posts -%}
+      {%- for post in posts -%}
+        {% include post-card.html post=post %}
+      {%- endfor -%}
 
-{% if plugins contains 'jekyll-paginate' %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.categories[page.slug] | default:site.tags[page.slug] | default:site.posts %}
-{% endif %}
+      {%- if paginator.total_pages > 1 -%}
+      <nav class="pagination">
+        {%- if paginator.previous_page -%}
+        <a class="pagination__prev" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
+        {%- else -%}<span class="pagination__prev is-disabled">← Newer</span>{%- endif -%}
+        <span class="pagination__count">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+        {%- if paginator.next_page -%}
+        <a class="pagination__next" href="{{ paginator.next_page_path | relative_url }}">Older →</a>
+        {%- else -%}<span class="pagination__next is-disabled">Older →</span>{%- endif -%}
+      </nav>
+      {%- endif -%}
+    </div>
 
-{% for post in posts %}
-  {% include_cached components/post.html post=post no_link_title=page.no_link_title no_excerpt=page.no_excerpt hide_image=page.hide_image no_lightbox=true %}
-{% endfor %}
-
-{% if plugins contains 'jekyll-paginate' %}
-  {% include components/pagination.html %}
-{% endif %}
+    {% include blog-sidebar.html %}
+  </div>
+</div>

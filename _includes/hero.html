@@ -1,0 +1,17 @@
+{%- comment -%} Hux-style full-width header. include.title / include.subtitle / include.image / include.meta {%- endcomment -%}
+{%- assign img = include.image | default: site.blog.cover -%}
+<header class="masthead" style="background-image: url('{{ img | relative_url }}')">
+  <div class="masthead__overlay"></div>
+  <div class="masthead__inner">
+    <div class="masthead__content">
+      {%- if include.tag -%}<span class="masthead__tag">{{ include.tag }}</span>{%- endif -%}
+      <h1 class="masthead__title">{{ include.title }}</h1>
+      {%- if include.subtitle and include.subtitle != "" -%}
+      <p class="masthead__subtitle">{{ include.subtitle }}</p>
+      {%- endif -%}
+      {%- if include.meta and include.meta != "" -%}
+      <p class="masthead__meta">{{ include.meta }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</header>

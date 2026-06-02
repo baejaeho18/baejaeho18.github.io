@@ -1,22 +1,33 @@
-// Copyright (c) 2019 Florian Klampfer <https://qwtel.com/>
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// ── Palette ─────────────────────────────────────────────
+$brand:      #00aeef;   // signature cyan-blue
+$accent:     #0a93c9;   // links / interactive text
+$accent-dk:  #06729e;
+$ink:        #1f2733;   // headings
+$body:       #3b424b;   // body text
+$muted:      #6b7480;   // secondary text
+$line:       #e7eaee;   // hairline borders
+$bg:         #ffffff;
+$bg-soft:    #f6f8fa;
+$bg-dark:    #1b2330;   // hero fallback
 
-$gray: #777;
-$gray-bg: rgba(0,0,0,.025);
-$gray-text: #666;
-$menu-text: #bbb;
-$body-color: #333;
-$body-bg: #fff;
-$border-color: #ebebeb;
+// ── Type ────────────────────────────────────────────────
+$sans: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$serif: 'Lora', Georgia, 'Noto Sans KR', serif;
+$mono: 'JetBrains Mono', 'Nanum Gothic Coding', Menlo, Consolas, monospace;
+
+// ── Metrics ─────────────────────────────────────────────
+$content:    760px;   // reading width
+$wide:       1120px;  // blog/academic shell
+$sidebar:    280px;   // profile / blog sidebar
+$radius:     12px;
+$radius-sm:  8px;
+$shadow:     0 1px 2px rgba(16,24,40,.04), 0 4px 16px rgba(16,24,40,.06);
+$shadow-lg:  0 10px 30px rgba(16,24,40,.12);
+
+// ── Breakpoints ─────────────────────────────────────────
+$bp-sm: 600px;
+$bp-md: 860px;
+$bp-lg: 1024px;
+
+@mixin md { @media (max-width: $bp-md) { @content; } }
+@mixin sm { @media (max-width: $bp-sm) { @content; } }

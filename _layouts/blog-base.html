@@ -1,0 +1,14 @@
+---
+layout: default
+hero: true
+---
+{% include hero.html title=page.title subtitle=page.subtitle image=site.blog.cover %}
+
+<div class="blog">
+  <div class="blog__container">
+    <div class="blog__list">
+      {{ content }}
+    </div>
+    {% include blog-sidebar.html %}
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{%- comment -%}
+  Comments via giscus. To enable, set the keys under `comments:` in _config.yml:
+    comments:
+      giscus:
+        repo:          "baejaeho18/baejaeho18.github.io"
+        repo_id:       "..."
+        category:      "Comments"
+        category_id:   "..."
+  See https://giscus.app to generate the IDs (needs GitHub Discussions enabled).
+{%- endcomment -%}
+{%- assign g = site.comments.giscus -%}
+{%- if page.comments and g and g.repo and g.repo != "" and g.repo_id and g.repo_id != "" -%}
+<section class="comments">
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ g.repo }}"
+    data-repo-id="{{ g.repo_id }}"
+    data-category="{{ g.category | default: 'Comments' }}"
+    data-category-id="{{ g.category_id }}"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+  </script>
+</section>
+{%- endif -%}
