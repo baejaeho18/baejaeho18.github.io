@@ -1,0 +1,86 @@
+// ── Legend ──────────────────────────────────────────────
+.conf-legend {
+  display: flex; flex-wrap: wrap; gap: 1.2rem;
+  font-size: .85rem; color: $muted; margin: 0 0 1.8rem;
+  span span.ci { margin-right: .15rem; }
+}
+.ci { display: inline-block; }
+
+.conf-tznote { font-size: .82rem; color: $muted; margin: -.3rem 0 1rem; }
+.conf-source { font-size: .8rem; color: $muted; margin-top: 2rem; }
+.conf-empty, .conf-month__empty { color: $muted; }
+
+// ── Upcoming deadline cards ─────────────────────────────
+.conf-upcoming { display: flex; flex-direction: column; gap: .7rem; }
+.conf-card {
+  display: flex; align-items: stretch; gap: 1rem;
+  border: 1px solid $line; border-radius: $radius; background: $bg;
+  padding: .8rem 1rem; color: $body;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.conf-card:hover { transform: translateY(-2px); box-shadow: $shadow; border-color: $brand; text-decoration: none; }
+.conf-card__body { min-width: 0; }
+.conf-card__head { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem; color: $ink; }
+.conf-card__head strong { font-size: 1.02rem; }
+.conf-round {
+  font-size: .72rem; font-weight: 600; color: $accent-dk;
+  background: rgba($brand,.1); border-radius: 999px; padding: .1em .6em;
+}
+.conf-card__meta { display: block; color: $muted; font-size: .85rem; margin-top: .25rem; overflow-wrap: anywhere; }
+
+// D-day badge
+.conf-dday {
+  flex: 0 0 auto; align-self: center; min-width: 64px; text-align: center;
+  font-weight: 700; font-size: .95rem; font-variant-numeric: tabular-nums;
+  padding: .5rem .6rem; border-radius: $radius-sm;
+  background: rgba($brand,.1); color: $accent-dk;
+}
+.conf-dday.is-soon { background: rgba(217,119,6,.14); color: #b26a00; }
+.conf-dday.is-urgent { background: rgba(217,45,32,.14); color: #d92d20; }
+.conf-dday.is-closed { background: $bg-soft; color: $muted; }
+
+// rank badge
+.conf-rank {
+  font-size: .66rem; font-weight: 700; letter-spacing: .03em;
+  padding: .12em .45em; border-radius: 4px; background: $bg-soft; color: $muted; border: 1px solid $line;
+}
+.conf-rank.is-astar { background: rgba($brand,.12); color: $accent-dk; border-color: transparent; }
+
+// ── 12-month calendar ───────────────────────────────────
+.conf-calendar {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem;
+}
+.conf-month {
+  border: 1px solid $line; border-radius: $radius; background: $bg; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.conf-month.is-empty { background: $bg-soft; opacity: .7; }
+.conf-month__label {
+  font-weight: 700; color: $ink; font-size: .9rem;
+  padding: .55rem .8rem; border-bottom: 1px solid $line; background: $bg-soft;
+  span { color: $muted; font-weight: 500; }
+}
+.conf-month.is-empty .conf-month__label { border-bottom: 0; }
+.conf-month__empty { padding: .6rem .8rem; font-size: .9rem; }
+.conf-month__list { list-style: none; margin: 0; padding: .4rem .6rem; display: flex; flex-direction: column; gap: .35rem; }
+
+.ce {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .35rem;
+  font-size: .82rem; padding: .25rem 0; border-bottom: 1px dashed $line;
+}
+.ce:last-child { border-bottom: 0; }
+.ce__name { font-weight: 600; color: $ink; }
+.ce__sub { color: $muted; }
+.ce__dday {
+  margin-left: auto; font-weight: 700; font-size: .72rem; font-variant-numeric: tabular-nums;
+  padding: .05em .45em; border-radius: 999px; background: rgba($brand,.1); color: $accent-dk;
+}
+.ce__dday.is-soon { background: rgba(217,119,6,.14); color: #b26a00; }
+.ce__dday.is-urgent { background: rgba(217,45,32,.14); color: #d92d20; }
+.ce__dday.is-closed { background: $bg-soft; color: $muted; }
+.ce--sub .ci { color: $accent-dk; }
+
+@include sm {
+  .conf-card { flex-direction: row; }
+  .conf-calendar { grid-template-columns: 1fr; }
+}

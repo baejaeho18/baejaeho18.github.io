@@ -1,0 +1,135 @@
+# ──────────────────────────────────────────────────────────────────────────
+#  Top security venues (CORE rank A / A*) — deadline tracker.
+#  Source: https://sec-deadlines.github.io/   (update each cycle)
+#  Deadlines are AoE (Anywhere-on-Earth, UTC-12), 23:59, unless noted.
+#  Leave notification / conf dates empty ("") when not yet announced (TBA).
+# ──────────────────────────────────────────────────────────────────────────
+source: "https://sec-deadlines.github.io/"
+
+venues:
+  - name: "IEEE S&P (Oakland)"
+    short: "S&P"
+    rank: "A*"
+    year: 2027
+    link: "https://sp2027.ieee-security.org/"
+    place: "Montreal, Canada"
+    deadlines:
+      - { date: "2026-06-11", label: "1st" }
+      - { date: "2026-11-17", label: "2nd" }
+    notification: ""
+    conf_start: ""
+    conf_end: ""
+
+  - name: "NDSS"
+    short: "NDSS"
+    rank: "A*"
+    year: 2027
+    link: "https://www.ndss-symposium.org/ndss2027/submissions/call-for-papers/"
+    place: "Seoul, Republic of Korea"
+    deadlines:
+      - { date: "2026-05-06", label: "Summer" }
+      - { date: "2026-08-19", label: "Fall" }
+    notification: ""
+    conf_start: "2027-03-22"
+    conf_end: "2027-03-26"
+
+  - name: "ACM CCS"
+    short: "CCS"
+    rank: "A*"
+    year: 2026
+    link: "https://www.sigsac.org/ccs/CCS2026"
+    place: "The Hague, The Netherlands"
+    deadlines:
+      - { date: "2026-01-14", label: "1st" }
+      - { date: "2026-04-29", label: "2nd" }
+    notification: ""
+    conf_start: "2026-11-15"
+    conf_end: "2026-11-19"
+
+  - name: "USENIX Security"
+    short: "USENIX Sec"
+    rank: "A*"
+    year: 2027
+    link: "https://www.usenix.org/conference/usenixsecurity27"
+    place: "Denver, CO, USA"
+    deadlines:
+      - { date: "2026-08-25", label: "Cycle 1" }
+      - { date: "2027-01-26", label: "Cycle 2" }
+    notification: ""
+    conf_start: "2027-08-11"
+    conf_end: "2027-08-13"
+
+  - name: "The Web Conference (WWW)"
+    short: "WWW"
+    rank: "A*"
+    year: 2026
+    link: "https://www2026.thewebconf.org"
+    place: "Dubai, United Arab Emirates"
+    deadlines:
+      - { date: "2025-10-07", label: "Full" }
+    notification: ""
+    conf_start: "2026-04-13"
+    conf_end: "2026-04-17"
+
+  - name: "ACM IMC"
+    short: "IMC"
+    rank: "A*"
+    year: 2026
+    link: "https://conferences.sigcomm.org/imc/2026/"
+    place: "Karlsruhe, Germany"
+    deadlines:
+      - { date: "2025-11-20", label: "Spring" }
+      - { date: "2026-04-29", label: "Fall" }
+    notification: ""
+    conf_start: "2026-11-03"
+    conf_end: "2026-11-06"
+
+  - name: "ASIA CCS"
+    short: "AsiaCCS"
+    rank: "A"
+    year: 2027
+    link: "https://asiaccs2027.cityu.edu.mo/home/index.html"
+    place: "Macau"
+    deadlines:
+      - { date: "2026-08-21", label: "1st" }
+      - { date: "2026-12-11", label: "2nd" }
+    notification: ""
+    conf_start: "2027-07-12"
+    conf_end: "2027-07-16"
+
+  - name: "Euro S&P"
+    short: "EuroS&P"
+    rank: "A"
+    year: 2026
+    link: "https://eurosp2026.ieee-security.org/"
+    place: "Lisbon, Portugal"
+    deadlines:
+      - { date: "2025-11-20", label: "Full" }
+    notification: ""
+    conf_start: "2026-07-06"
+    conf_end: "2026-07-10"
+
+  - name: "ESORICS"
+    short: "ESORICS"
+    rank: "A"
+    year: 2026
+    link: "https://sites.google.com/di.uniroma1.it/esorics2026/"
+    place: "Rome, Italy"
+    deadlines:
+      - { date: "2026-01-09", label: "1st" }
+      - { date: "2026-04-21", label: "2nd" }
+    notification: ""
+    conf_start: "2026-09-14"
+    conf_end: "2026-09-18"
+
+  - name: "ACSAC"
+    short: "ACSAC"
+    rank: "A"
+    year: 2026
+    link: "https://www.acsac.org/2026/submissions/papers/"
+    place: "Los Angeles, CA, USA"
+    deadlines:
+      - { date: "2026-05-26", label: "Full" }
+    notification: ""
+    conf_start: "2026-12-07"
+    conf_end: "2026-12-11"
