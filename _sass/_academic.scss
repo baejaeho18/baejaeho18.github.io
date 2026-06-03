@@ -119,6 +119,14 @@
 .award-list .award__title { color: $ink; font-weight: 500; }
 .award-list .award__org { color: $muted; font-size: .85rem; display: block; }
 
+// year subheadings (e.g. grouped Teaching)
+.cv-year {
+  font-size: 1.05rem; font-weight: 700; color: $accent-dk;
+  margin: 1.8rem 0 .2rem; padding-bottom: .25rem; border-bottom: 1px solid $line;
+}
+.cv-year:first-of-type { margin-top: .3rem; }
+.cv-year + .timeline { margin-bottom: .5rem; }
+
 // page headers (non-home academic pages)
 .page-title { font-size: 2rem; margin: 0 0 .3rem; }
 .page-subtitle { color: $muted; margin: 0 0 1.6rem; }
