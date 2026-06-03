@@ -90,7 +90,7 @@
     }
     if (ev.length) rows.push({ v: v, ev: ev, order: Math.min.apply(null, ev.map(function (e) { return e.pos; })) });
   });
-  rows.sort(function (a, b) { return a.order - b.order; });
+  // rows keep the order of _data/conferences.yml (no re-sort)
 
   // header months
   var head = '<div class="gantt__row gantt__row--head"><div class="gantt__label"></div><div class="gantt__track gantt__months">';
@@ -113,7 +113,7 @@
         : 'Notification · ' + esc(fmtDay(e.date)));
       return '<span class="g-dot ' + (sub ? 'g-dot--sub ' + e.dd.cls : 'g-dot--notif') + '" style="left:' + e.pos.toFixed(2) + '%" title="' + tip + '"></span>';
     }).join('');
-    return '<div class="gantt__row"><div class="gantt__label">' + rankBadge(r.v.rank) + '<span>' + esc(r.v.short) + ' ' + esc(r.v.year) + '</span></div>' +
+    return '<div class="gantt__row"><div class="gantt__label"><span>' + esc(r.v.short) + ' ' + esc(r.v.year) + '</span></div>' +
            '<div class="gantt__track">' + marks + '</div></div>';
   }).join('');
 
