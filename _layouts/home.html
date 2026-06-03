@@ -41,12 +41,13 @@ layout: default
     <section class="section" id="selected-publications">
       <h2 class="section__title">Selected Publications <a class="section__more" href="{{ '/publications/' | relative_url }}">all →</a></h2>
       <ol class="pub-list">
-        {%- for pub in cv.publications limit: 3 -%}
+        {%- assign selected_pubs = cv.publications | where: "selected", true -%}
+        {%- for pub in selected_pubs -%}
         <li class="pub">
           <p class="pub__title">
             {%- if pub.url and pub.url != "" -%}<a href="{{ pub.url }}" target="_blank" rel="noopener">{{ pub.title }}</a>{%- else -%}{{ pub.title }}{%- endif -%}
           </p>
-          <p class="pub__meta">{{ pub.authors }} · <em>{{ pub.venue }}</em>{% if pub.award %} · <span class="pub__award">🏆 {{ pub.award }}</span>{% endif %}</p>
+          <p class="pub__meta">{{ pub.authors }} · <em>{{ pub.venue }}</em>, {{ pub.year }}{% if pub.award %} · <span class="pub__award">🏆 {{ pub.award }}</span>{% endif %}</p>
         </li>
         {%- endfor -%}
       </ol>
