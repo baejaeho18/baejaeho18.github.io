@@ -106,7 +106,7 @@ teaching:
 publications:
   - title: "ByCoBERT: A Bytecode Pre-trained Model based Security Vulnerability Prediction Technique"
     title_ko: "ByCoBERT: Bytecode pre-trained 모델 기반 보안 취약점 예측 기법"
-    authors: "<strong>Jaeho Bae</strong>, et al."
+    authors: "Daeseok Kim, <strong>Jaeho Bae</strong>, Jooyoung Jang, Jaechang Nam"
     venue: "Journal of KIISE (JOK)"
     year: 2026          # used only for ordering; hidden while under review
     type: journal
@@ -122,7 +122,7 @@ publications:
     url: "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003146557"
   - title: "Survey on Security Vulnerability Detection Techniques based on Bytecode Analysis"
     title_ko: "바이트코드 분석을 통한 보안 취약점 검출 기술 동향"
-    authors: "<strong>Jaeho Bae</strong>, et al."
+    authors: "Daeseok Kim, Jooyoung Jang, <strong>Jaeho Bae</strong>, Jaechang Nam"
     venue: "Korea Conference on Software Engineering (KCSE)"
     year: 2023
     type: conference
