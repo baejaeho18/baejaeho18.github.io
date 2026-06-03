@@ -5,12 +5,6 @@ subtitle: Top security venues (CORE A / A*) — deadlines, notifications & dates
 permalink: /conferences/
 ---
 
-<div class="conf-legend">
-  <span><i class="lg lg--sub"></i> Submission deadline</span>
-  <span><i class="lg lg--notif"></i> Notification</span>
-  <span><i class="lg lg--conf"></i> Conference period</span>
-</div>
-
 <section class="section">
 <h2 class="section__title">Upcoming submission deadlines</h2>
 <p id="conf-tznote" class="conf-tznote"></p>
@@ -19,6 +13,11 @@ permalink: /conferences/
 
 <section class="section">
 <h2 class="section__title">Next 12 months</h2>
+<div class="conf-legend">
+  <span><i class="lg lg--sub"></i> Submission deadline</span>
+  <span><i class="lg lg--notif"></i> Notification</span>
+  <span><i class="lg lg--conf"></i> Conference period</span>
+</div>
 <div id="conf-calendar" class="conf-calendar"></div>
 <p class="conf-hint">Each row is a venue; dots mark single dates, bars mark conference periods. The red line is today. Hover any marker for details.</p>
 </section>
