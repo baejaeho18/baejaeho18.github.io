@@ -111,13 +111,13 @@ publications:
     year: 2024
     type: journal
     url: ""
-  - title: "Detecting Security Vulnerabilities using GPT Models"
-    title_ko: "GPT 모델을 활용한 보안 취약점 탐색"
-    authors: "Jaeho Bae, et al."
+  - title: "Detecting Security Vulnerabilities Using a GPT Model"
+    title_ko: "GPT 모델을 활용한 보안취약점 탐색"
+    authors: "Jooyoung Jang, <strong>Jaeho Bae</strong>, Daeseok Kim, Jaechang Nam"
     venue: "KIISE Transactions on Computing Practices (KTCP), 2024"
     year: 2024
     type: journal
-    url: "https://www.kiise.or.kr/e_journal/2024/12/KTCP/01.pdf"
+    url: "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003146557"
   - title: "Survey on Security Vulnerability Detection Techniques based on Bytecode Analysis"
     title_ko: "바이트코드 분석을 통한 보안 취약점 검출 기술 동향"
     authors: "Jaeho Bae, et al."
