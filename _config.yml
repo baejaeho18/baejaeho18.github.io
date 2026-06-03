@@ -19,7 +19,7 @@ baseurl:          ""
 author:
   name:           Jaeho Bae
   korean_name:    배재호
-  email:          hojaeb02@gmail.com
+  email:          bjh1749@gmail.com
   avatar:         /assets/img/me/me0.jpg
   title:          M.S. Student in Computer Science & Engineering
   affiliation:    UNIST
@@ -31,7 +31,7 @@ author:
 # Social links (rendered in the sidebar & footer)
 social:
   github:    baejaeho18
-  email:     hojaeb02@gmail.com
+  email:     bjh1749@gmail.com
   scholar:   ""           # Google Scholar profile URL (optional)
   linkedin:  ""           # LinkedIn URL (optional)
   cv:        "https://github.com/baejaeho18/baejaeho18/blob/main/assets/%5BCV%5D%20CurriculumVitae_BJH.pdf"
