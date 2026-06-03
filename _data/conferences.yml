@@ -73,7 +73,7 @@ venues:
 
   - name: "ACM IMC"
     short: "IMC"
-    rank: "A*"
+    rank: "A"
     year: 2026
     link: "https://conferences.sigcomm.org/imc/2026/"
     place: "Karlsruhe, Germany"
