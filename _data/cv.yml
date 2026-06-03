@@ -60,12 +60,12 @@ experience:
     end: "2021.06"
     type: military
     summary: Military service in a cyber response unit. Awarded as an exemplary serviceman.
-  - role: General Affairs
+  - role: General Affairs (Club Officer)
     org: Linux Hackers Club, HGU
     url: ""
     start: "2021.09"
     end: "2022.06"
-    type: service
+    type: activity
     summary: ""
 
 # ── Teaching ────────────────────────────────────────────────────────────────
