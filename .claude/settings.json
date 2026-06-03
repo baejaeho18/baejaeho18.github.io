@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk '{printf \"%.1fMB\\\\t%s\\\\n\", $1/1048576, $2}')"
+    ]
+  }
+}
