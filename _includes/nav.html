@@ -17,9 +17,6 @@
         {%- if item.url != "/" and cur contains item.url -%}{%- assign active = true -%}{%- endif -%}
         <li><a href="{{ link }}" class="{% if active %}is-active{% endif %}">{{ item.title }}</a></li>
       {%- endfor -%}
-      {%- if site.social.cv and site.social.cv != "" -%}
-        <li><a href="{{ site.social.cv }}" class="navbar__cv" target="_blank" rel="noopener">CV</a></li>
-      {%- endif -%}
     </ul>
   </div>
 </nav>
