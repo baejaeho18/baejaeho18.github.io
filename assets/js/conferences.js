@@ -50,7 +50,7 @@
   if (upEl) {
     upEl.innerHTML = upcoming.length ? upcoming.map(function (x) {
       var d = dday(x.inst);
-      var conf = x.v.conf_start ? '🎤 ' + esc(fmtRange(x.v.conf_start, x.v.conf_end)) + ' · ' + esc(x.v.place) : '🎤 ' + esc(x.v.place || 'TBA');
+      var conf = '🎤 ' + (x.v.conf_start ? esc(fmtRange(x.v.conf_start, x.v.conf_end)) : 'dates TBA') + (x.v.place ? ' · ' + esc(x.v.place) : '');
       var notif = x.v.notification ? '🔔 ' + esc(fmtRange(x.v.notification)) : '🔔 notification TBA';
       return '<a class="conf-card" href="' + esc(x.v.link) + '" target="_blank" rel="noopener">' +
         '<span class="conf-dday ' + d.cls + '">' + d.txt + '</span>' +
@@ -86,7 +86,7 @@
     if (v.notification && inWin(v.notification)) ev.push({ kind: 'notif', date: v.notification, pos: posOf(v.notification) });
     if (v.conf_start && inWin(v.conf_start)) {
       var ps = posOf(v.conf_start), pe = posOf(v.conf_end || v.conf_start, true);
-      ev.push({ kind: 'conf', date: v.conf_start, end: v.conf_end, pos: ps, width: Math.min(100 - ps, Math.max(pe - ps, 1.4)) });
+      ev.push({ kind: 'conf', date: v.conf_start, end: v.conf_end, pos: ps, width: Math.min(100 - ps, Math.max(pe - ps, 2.6)) });
     }
     if (ev.length) rows.push({ v: v, ev: ev, order: Math.min.apply(null, ev.map(function (e) { return e.pos; })) });
   });
