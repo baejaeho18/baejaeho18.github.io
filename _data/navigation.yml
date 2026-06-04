@@ -1,7 +1,6 @@
 # Main navigation bar. `url` is relative to the site root.
+# (The "Jaeho Bae" brand on the left already links Home.)
 main:
-  - title: Home
-    url: /
   - title: Publications
     url: /publications/
   - title: Conferences
