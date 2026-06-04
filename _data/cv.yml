@@ -55,13 +55,6 @@ experience:
     end: "2023.12"
     type: research
     summary: Research on security vulnerability detection via bytecode analysis.
-  - role: Situation Control Unit · CERT (Computer Emergency Response Team)
-    org: Navy Cyber Operation Center
-    url: ""
-    start: "2019.12"
-    end: "2021.06"
-    type: military
-    summary: Military service in a cyber response unit. Awarded as an exemplary serviceman.
   - role: General Affairs (Club Officer)
     org: Linux Hackers Club, HGU
     url: ""
@@ -69,6 +62,13 @@ experience:
     end: "2022.06"
     type: activity
     summary: ""
+  - role: Situation Control Unit · CERT (Computer Emergency Response Team)
+    org: Navy Cyber Operation Center
+    url: ""
+    start: "2019.12"
+    end: "2021.06"
+    type: military
+    summary: Military service in a cyber response unit. Awarded as an exemplary serviceman.
 
 # ── Teaching ────────────────────────────────────────────────────────────────
 teaching:
