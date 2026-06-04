@@ -7,12 +7,15 @@
   try { venues = JSON.parse(dataEl.textContent); } catch (e) { return; }
 
   var now = new Date();
+  var TODAY0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var tz = 'local time';
   try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || tz; } catch (e) {}
 
   function deadlineInstant(d) { return new Date(d + 'T23:59:00-12:00'); }      // AoE 23:59
   function dayDate(d) { var p = d.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function iso(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function addYears(ds, n) { if (!ds || !n) return ds; var d = dayDate(ds); return iso(new Date(d.getFullYear() + n, d.getMonth(), d.getDate())); }
   function fmtDay(d) { var x = dayDate(d); return MONTHS[x.getMonth()] + ' ' + x.getDate(); }
   function fmtRange(s, e) {
     if (!s) return 'TBA';
@@ -33,15 +36,41 @@
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function rankBadge(r) { return '<span class="conf-rank' + (r === 'A*' ? ' is-astar' : '') + '">' + esc(r) + '</span>'; }
 
-  // ── Section 1: upcoming submission deadlines, sorted by soonest, with live D-day ──
+  // ── Pre-process: roll each venue to its upcoming cycle, anchored on the
+  //    conference date. Once the conference has passed we shift the whole venue
+  //    forward by whole years and flag it estimated (TBA) until it is re-announced.
+  function rollYears(confStr) {
+    if (!confStr) return 0;
+    var x = dayDate(confStr), n = 0;
+    while (x < TODAY0 && n < 8) { x = new Date(x.getFullYear() + 1, x.getMonth(), x.getDate()); n++; }
+    return n;
+  }
+  var P = venues.map(function (v) {
+    var ry = rollYears(v.conf_start);
+    var vEst = ry > 0;                       // whole venue rolled → estimated
+    var dls = (v.deadlines || []).map(function (dl) {
+      return {
+        label: dl.label,
+        date: addYears(dl.date, ry), subEst: vEst || !!dl.tba,
+        notif: dl.notif ? addYears(dl.notif, ry) : '', notifEst: vEst || !!dl.notif_tba
+      };
+    });
+    var cs = addYears(v.conf_start, ry), ce = addYears(v.conf_end, ry);
+    return {
+      v: v, deadlines: dls, conf_start: cs, conf_end: ce,
+      confEst: vEst || !!v.conf_tba,
+      year: cs ? dayDate(cs).getFullYear() : v.year
+    };
+  });
+
+  // ── Section 1: upcoming submission deadlines (confirmed only), live D-day ──
   var deadlines = [];
-  venues.forEach(function (v) {
-    (v.deadlines || []).forEach(function (dl) {
-      deadlines.push({ v: v, label: dl.label, date: dl.date, notif: dl.notif, notif_tba: dl.notif_tba, tba: dl.tba, inst: deadlineInstant(dl.date) });
+  P.forEach(function (p) {
+    p.deadlines.forEach(function (dl) {
+      deadlines.push({ p: p, label: dl.label, date: dl.date, est: dl.subEst, notif: dl.notif, notifEst: dl.notifEst, inst: deadlineInstant(dl.date) });
     });
   });
-  // only confirmed (non-estimated) deadlines get a precise D-day countdown
-  var upcoming = deadlines.filter(function (x) { return !x.tba && x.inst.getTime() > now.getTime(); })
+  var upcoming = deadlines.filter(function (x) { return !x.est && x.inst.getTime() > now.getTime(); })
                           .sort(function (a, b) { return a.inst - b.inst; });
 
   var tzNote = document.getElementById('conf-tznote');
@@ -50,16 +79,16 @@
   var upEl = document.getElementById('conf-upcoming');
   if (upEl) {
     upEl.innerHTML = upcoming.length ? upcoming.map(function (x) {
-      var d = dday(x.inst);
-      var conf = '🎤 ' + (x.v.conf_start ? esc(fmtRange(x.v.conf_start, x.v.conf_end)) + (x.v.conf_tba ? ' (TBA)' : '') : 'dates TBA') + (x.v.place && x.v.place !== 'TBA' ? ' · ' + esc(x.v.place) : '');
-      var notif = x.notif ? '🔔 ' + esc(fmtRange(x.notif)) + (x.notif_tba ? ' (TBA)' : '') : '🔔 notification TBA';
-      return '<a class="conf-card" href="' + esc(x.v.link) + '" target="_blank" rel="noopener">' +
+      var p = x.p, d = dday(x.inst);
+      var conf = '🎤 ' + (p.conf_start ? esc(fmtRange(p.conf_start, p.conf_end)) + (p.confEst ? ' (TBA)' : '') : 'dates TBA') + (p.v.place && p.v.place !== 'TBA' ? ' · ' + esc(p.v.place) : '');
+      var notif = x.notif ? '🔔 ' + esc(fmtRange(x.notif)) + (x.notifEst ? ' (TBA)' : '') : '🔔 notification TBA';
+      return '<a class="conf-card" href="' + esc(p.v.link) + '" target="_blank" rel="noopener">' +
         '<span class="conf-dday ' + d.cls + '">' + d.txt + '</span>' +
         '<span class="conf-card__body">' +
-          '<span class="conf-card__head">' + rankBadge(x.v.rank) + '<strong>' + esc(x.v.short) + ' ' + esc(x.v.year) + '</strong> <span class="conf-round">' + esc(x.label) + '</span></span>' +
+          '<span class="conf-card__head">' + rankBadge(p.v.rank) + '<strong>' + esc(p.v.short) + ' ' + esc(p.year) + '</strong> <span class="conf-round">' + esc(x.label) + '</span></span>' +
           '<span class="conf-card__meta">📝 ' + esc(fmtDay(x.date)) + ' (AoE) &nbsp;·&nbsp; ' + notif + ' &nbsp;·&nbsp; ' + conf + '</span>' +
         '</span></a>';
-    }).join('') : '<p class="conf-empty">No upcoming deadlines on record — update _data/conferences.yml.</p>';
+    }).join('') : '<p class="conf-empty">No upcoming confirmed deadlines — see the timeline below.</p>';
   }
 
   // ── Section 2: Google-Calendar-style horizontal timeline (Gantt) ──────────
@@ -71,7 +100,6 @@
   function inWin(d) { var x = dayDate(d); return x >= winStart && x < winEnd; }
   function monthsSince(x) { return (x.getFullYear() - startY) * 12 + (x.getMonth() - startM); }
   function daysInMonth(x) { return new Date(x.getFullYear(), x.getMonth() + 1, 0).getDate(); }
-  // position (0..100) along the 12 equal-width month columns
   function posOf(dateStr, endOfDay) {
     var x = dayDate(dateStr);
     var frac = ((x.getDate() - 1) + (endOfDay ? 1 : 0)) / daysInMonth(x);
@@ -79,21 +107,21 @@
   }
 
   var rows = [];
-  venues.forEach(function (v) {
+  P.forEach(function (p) {
     var ev = [];
-    (v.deadlines || []).forEach(function (dl) {
-      if (inWin(dl.date)) ev.push({ kind: 'sub', date: dl.date, pos: posOf(dl.date), label: dl.label, dd: dday(deadlineInstant(dl.date)), tba: dl.tba });
-      if (dl.notif && inWin(dl.notif)) ev.push({ kind: 'notif', date: dl.notif, pos: posOf(dl.notif), label: dl.label, tba: dl.notif_tba });
+    p.deadlines.forEach(function (dl) {
+      if (inWin(dl.date)) ev.push({ kind: 'sub', date: dl.date, pos: posOf(dl.date), label: dl.label, est: dl.subEst, dd: dday(deadlineInstant(dl.date)) });
+      if (dl.notif && inWin(dl.notif)) ev.push({ kind: 'notif', date: dl.notif, pos: posOf(dl.notif), label: dl.label, est: dl.notifEst });
     });
-    if (v.conf_start && inWin(v.conf_start)) {
-      var ps = posOf(v.conf_start), pe = posOf(v.conf_end || v.conf_start, true);
-      ev.push({ kind: 'conf', date: v.conf_start, end: v.conf_end, pos: ps, width: Math.min(100 - ps, Math.max(pe - ps, 2.6)), tba: v.conf_tba });
+    if (p.conf_start && inWin(p.conf_start)) {
+      var ps = posOf(p.conf_start), pe = posOf(p.conf_end || p.conf_start, true);
+      ev.push({ kind: 'conf', date: p.conf_start, end: p.conf_end, pos: ps, width: Math.min(100 - ps, Math.max(pe - ps, 2.6)), est: p.confEst });
     }
-    if (ev.length) rows.push({ v: v, ev: ev });
+    if (ev.length) rows.push({ p: p, ev: ev });
   });
-  // sort rows by conference (start) date, earliest first
-  function confKey(v) { return v.conf_start ? dayDate(v.conf_start).getTime() : Infinity; }
-  rows.sort(function (a, b) { return confKey(a.v) - confKey(b.v); });
+  // order rows by conference (start) date, earliest first
+  function confKey(p) { return p.conf_start ? dayDate(p.conf_start).getTime() : Infinity; }
+  rows.sort(function (a, b) { return confKey(a.p) - confKey(b.p); });
 
   // header months
   var head = '<div class="gantt__row gantt__row--head"><div class="gantt__label"></div><div class="gantt__track gantt__months">';
@@ -103,21 +131,20 @@
   }
   head += '</div></div>';
 
-  // body rows
   var body = rows.map(function (r) {
     var marks = r.ev.map(function (e) {
-      var tbaTip = e.tba ? ' — TBA (estimated)' : '';
+      var estTip = e.est ? ' — estimated (TBA)' : '';
       if (e.kind === 'conf') {
-        return '<span class="g-bar' + (e.tba ? ' is-tba' : '') + '" style="left:' + e.pos.toFixed(2) + '%;width:' + e.width.toFixed(2) + '%" ' +
-          'title="' + esc(r.v.short + ' ' + r.v.year) + ' · Conference · ' + esc(fmtRange(e.date, e.end)) + tbaTip + '"></span>';
+        return '<span class="g-bar' + (e.est ? ' is-tba' : '') + '" style="left:' + e.pos.toFixed(2) + '%;width:' + e.width.toFixed(2) + '%" ' +
+          'title="' + esc(r.p.v.short + ' ' + r.p.year) + ' · Conference · ' + esc(fmtRange(e.date, e.end)) + estTip + '"></span>';
       }
       var sub = e.kind === 'sub';
-      var tip = esc(r.v.short + ' ' + r.v.year) + ' · ' + (sub
-        ? 'Submission (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + ' AoE' + (e.tba ? tbaTip : ' · ' + e.dd.txt)
-        : 'Notification (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + tbaTip);
-      return '<span class="g-dot ' + (sub ? 'g-dot--sub' : 'g-dot--notif') + (e.tba ? ' is-tba' : '') + '" style="left:' + e.pos.toFixed(2) + '%" title="' + tip + '"></span>';
+      var tip = esc(r.p.v.short + ' ' + r.p.year) + ' · ' + (sub
+        ? 'Submission (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + ' AoE' + (e.est ? estTip : ' · ' + e.dd.txt)
+        : 'Notification (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + estTip);
+      return '<span class="g-dot ' + (sub ? 'g-dot--sub' : 'g-dot--notif') + (e.est ? ' is-tba' : '') + '" style="left:' + e.pos.toFixed(2) + '%" title="' + tip + '"></span>';
     }).join('');
-    return '<div class="gantt__row"><div class="gantt__label"><span>' + esc(r.v.short) + ' ' + esc(r.v.year) + '</span></div>' +
+    return '<div class="gantt__row"><div class="gantt__label"><span>' + esc(r.p.v.short) + ' ' + esc(r.p.year) + '</span></div>' +
            '<div class="gantt__track">' + marks + '</div></div>';
   }).join('');
 

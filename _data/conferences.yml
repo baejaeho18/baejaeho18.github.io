@@ -3,10 +3,12 @@
 #  Sources: official CFPs + https://sec-deadlines.github.io/   (update each cycle)
 #  Submission deadlines are AoE (Anywhere-on-Earth, UTC-12), 23:59.
 #  Each deadline round carries its own `notif` (author-notification date).
-#  Flags mark estimated/unannounced dates (rendered as TBA on the timeline):
-#    tba: true        → the submission date is an estimate (last year + 1)
-#    notif_tba: true  → the notification date is an estimate
-#    conf_tba: true   → the conference dates are an estimate
+#  Store the REAL announced dates for the current cycle. The page auto-rolls a
+#  venue to next year (shown as TBA/estimated) once its conference date passes —
+#  no need to edit then.
+#  Flags force a date to render as TBA even though it is in the future
+#  (use only for an upcoming cycle whose date is not officially announced yet):
+#    tba: true / notif_tba: true / conf_tba: true
 # ──────────────────────────────────────────────────────────────────────────
 source: "https://sec-deadlines.github.io/"
 
@@ -43,8 +45,8 @@ venues:
     link: "https://www.sigsac.org/ccs/CCS2026/"
     place: "The Hague, The Netherlands"
     deadlines:
-      - { date: "2026-01-14", label: "1st", notif: "2026-04-01", notif_tba: true }
-      - { date: "2026-04-29", label: "2nd", notif: "2026-07-29", notif_tba: true }
+      - { date: "2026-01-14", label: "1st", notif: "2026-04-09" }
+      - { date: "2026-04-29", label: "2nd", notif: "2026-07-17" }
     conf_start: "2026-11-15"
     conf_end: "2026-11-19"
 
@@ -63,14 +65,13 @@ venues:
   - name: "The Web Conference (WWW)"
     short: "WWW"
     rank: "A*"
-    year: 2027
+    year: 2026
     link: "https://www2026.thewebconf.org"
-    place: "TBA"
+    place: "Dubai, United Arab Emirates"
     deadlines:
-      - { date: "2026-10-07", label: "Full", notif: "2027-01-13", tba: true, notif_tba: true }
-    conf_start: "2027-04-13"
-    conf_end: "2027-04-17"
-    conf_tba: true
+      - { date: "2025-10-07", label: "Full", notif: "2026-01-13" }
+    conf_start: "2026-04-13"
+    conf_end: "2026-04-17"
 
   - name: "ACM IMC"
     short: "IMC"
@@ -114,8 +115,8 @@ venues:
     link: "https://sites.google.com/di.uniroma1.it/esorics2026/"
     place: "Rome, Italy"
     deadlines:
-      - { date: "2026-01-09", label: "1st", notif: "2026-03-20", notif_tba: true }
-      - { date: "2026-04-21", label: "2nd", notif: "2026-06-30", notif_tba: true }
+      - { date: "2026-01-09", label: "1st", notif: "2026-03-10" }
+      - { date: "2026-04-21", label: "2nd", notif: "2026-06-12" }
     conf_start: "2026-09-14"
     conf_end: "2026-09-18"
 

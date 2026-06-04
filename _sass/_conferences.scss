@@ -86,7 +86,9 @@
 }
 .g-dot--sub   { transform: translate(-50%, -50%); border-radius: 50%; background: #2563eb; }
 .g-dot--notif { transform: translate(-50%, -50%) rotate(45deg); border-radius: 3px; width: 13px; height: 13px; background: #f59e0b; }
-.g-dot.is-tba { background: #fff; border-style: dashed; border-color: #9ca3af; box-shadow: none; }
+// TBA keeps the type's colour/shape but turns faded + dashed (submission vs notification stay distinct)
+.g-dot--sub.is-tba   { background: rgba(37,99,235,.16); border-style: dashed; border-color: #6f9cf0; box-shadow: none; }
+.g-dot--notif.is-tba { background: rgba(245,158,11,.22); border-style: dashed; border-color: #e0a13a; box-shadow: none; }
 
 .g-bar {
   position: absolute; top: 50%; transform: translateY(-50%); z-index: 1;
@@ -95,8 +97,8 @@
   box-shadow: 0 0 0 1.5px #fff, 0 1px 3px rgba(16,24,40,.25);
 }
 .g-bar.is-tba {
-  background: repeating-linear-gradient(45deg, #eef0f2, #eef0f2 4px, #f7f8fa 4px, #f7f8fa 8px);
-  border: 1.5px dashed #9ca3af; box-shadow: none;
+  background: rgba(16,185,129,.18);
+  border: 1.6px dashed #4cc79e; box-shadow: none;
 }
 
 .conf-hint { font-size: .8rem; color: $muted; margin: .6rem 0 0; }
