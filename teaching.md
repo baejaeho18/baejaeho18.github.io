@@ -1,5 +1,5 @@
 ---
 permalink: /teaching/
-redirect_to: /explore/#teaching
+redirect_to: /activities/#teaching
 sitemap: false
 ---

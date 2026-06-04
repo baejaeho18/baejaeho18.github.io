@@ -1,8 +1,10 @@
 ---
 layout: page
-title: Explore
+title: Activities
 subtitle: Experience, teaching, projects, and honors.
-permalink: /explore/
+permalink: /activities/
+redirect_from:
+  - /explore/
 ---
 
 <nav class="subtabs" id="subtabs">

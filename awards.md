@@ -1,5 +1,5 @@
 ---
 permalink: /awards/
-redirect_to: /explore/#awards
+redirect_to: /activities/#awards
 sitemap: false
 ---
