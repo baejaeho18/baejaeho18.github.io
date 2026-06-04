@@ -85,7 +85,7 @@
       return '<a class="conf-card" href="' + esc(p.v.link) + '" target="_blank" rel="noopener">' +
         '<span class="conf-dday ' + d.cls + '">' + d.txt + '</span>' +
         '<span class="conf-card__body">' +
-          '<span class="conf-card__head">' + rankBadge(p.v.rank) + '<strong>' + esc(p.v.short) + ' ' + esc(p.year) + '</strong> <span class="conf-round">' + esc(x.label) + '</span></span>' +
+          '<span class="conf-card__head"><strong>' + esc(p.v.short) + ' ' + esc(p.year) + '</strong> <span class="conf-round">' + esc(x.label) + '</span></span>' +
           '<span class="conf-card__meta">📝 ' + esc(fmtDay(x.date)) + ' (AoE) &nbsp;·&nbsp; ' + notif + ' &nbsp;·&nbsp; ' + conf + '</span>' +
         '</span></a>';
     }).join('') : '<p class="conf-empty">No upcoming confirmed deadlines — see the timeline below.</p>';
