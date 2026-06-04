@@ -1,20 +1,5 @@
 <footer class="footer">
   <div class="footer__inner">
-    <ul class="footer__social">
-      {%- if site.social.github and site.social.github != "" -%}
-      <li><a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener" aria-label="GitHub">{% include icons/github.svg %}</a></li>
-      {%- endif -%}
-      {%- if site.social.scholar and site.social.scholar != "" -%}
-      <li><a href="{{ site.social.scholar }}" target="_blank" rel="noopener" aria-label="Google Scholar">{% include icons/scholar.svg %}</a></li>
-      {%- endif -%}
-      {%- if site.social.linkedin and site.social.linkedin != "" -%}
-      <li><a href="{{ site.social.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">{% include icons/linkedin.svg %}</a></li>
-      {%- endif -%}
-      {%- if site.social.email and site.social.email != "" -%}
-      <li><a href="mailto:{{ site.social.email }}" aria-label="Email">{% include icons/mail.svg %}</a></li>
-      {%- endif -%}
-      <li><a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS feed">{% include icons/rss.svg %}</a></li>
-    </ul>
     <p class="footer__copy">
       &copy; {{ 'now' | date: "%Y" }} {{ site.author.name }} ({{ site.author.korean_name }}).
       Built with <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>.
@@ -22,5 +7,8 @@
   </div>
 </footer>
 
-<button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+<div class="scroll-nav" id="scrollNav">
+  <button id="toTop" class="scroll-nav__btn" aria-label="Scroll to top" title="Top">↑</button>
+  <button id="toBottom" class="scroll-nav__btn" aria-label="Scroll to bottom" title="Bottom">↓</button>
+</div>
 <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
