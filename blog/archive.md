@@ -1,6 +1,6 @@
 ---
 layout: blog-base
-title: Archive
+title: Years
 subtitle: Browse posts by year.
 permalink: /blog/archive/
 ---
