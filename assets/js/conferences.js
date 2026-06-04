@@ -46,7 +46,7 @@
     return n;
   }
   var P = venues.map(function (v) {
-    var ry = rollYears(v.conf_start);
+    var ry = rollYears(v.conf_end || v.conf_start);   // roll only after the conference ends
     var vEst = ry > 0;                       // whole venue rolled → estimated
     var dls = (v.deadlines || []).map(function (dl) {
       return {

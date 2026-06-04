@@ -130,3 +130,26 @@ venues:
       - { date: "2026-05-26", label: "Full", notif: "2026-09-08" }
     conf_start: "2026-12-07"
     conf_end: "2026-12-11"
+
+  # ── Current-year editions whose conference itself is still upcoming. ──
+  # (Their submission deadlines already passed; listed conference-only so the
+  #  imminent event shows on the calendar alongside the next open cycle above.)
+  - name: "USENIX Security"
+    short: "USENIX Sec"
+    rank: "A*"
+    year: 2026
+    link: "https://www.usenix.org/conference/usenixsecurity26"
+    place: "Baltimore, MD, USA"
+    deadlines: []
+    conf_start: "2026-08-12"
+    conf_end: "2026-08-14"
+
+  - name: "ASIA CCS"
+    short: "AsiaCCS"
+    rank: "A"
+    year: 2026
+    link: "https://asiaccs2026.cse.iitkgp.ac.in/"
+    place: "Bangalore, India"
+    deadlines: []
+    conf_start: "2026-06-01"
+    conf_end: "2026-06-05"
