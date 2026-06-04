@@ -14,6 +14,10 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  // sticky footer: fill at least the viewport so the footer sits at the bottom
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 p, li, h1, h2, h3, h4, dd, dt, figcaption { overflow-wrap: break-word; }
@@ -85,7 +89,7 @@ thead th { background: $bg-soft; }
 ul, ol { padding-left: 1.4em; }
 li { margin: .25em 0; }
 
-.site-main { min-height: 60vh; }
+.site-main { flex: 1 0 auto; }   // grow to push the footer to the bottom
 
 // Buttons
 .btn {
