@@ -127,6 +127,22 @@
 .cv-year:first-of-type { margin-top: .3rem; }
 .cv-year + .timeline { margin-bottom: .5rem; }
 
+// Sub-tab bar (Explore) — compact segmented control, switches panels in place
+.subtabs {
+  display: inline-flex; flex-wrap: wrap; gap: .2rem;
+  background: $bg-soft; border: 1px solid $line; border-radius: 999px;
+  padding: .25rem; margin: .2rem 0 1.8rem;
+}
+.subtab {
+  padding: .35rem .95rem; border-radius: 999px;
+  font-size: .88rem; font-weight: 500; color: $muted; white-space: nowrap;
+}
+.subtab:hover { color: $accent-dk; text-decoration: none; }
+.subtab.is-active { background: $bg; color: $ink; box-shadow: $shadow; }
+.subpanel { display: none; }
+.subpanel.is-active { display: block; }
+.subpanel .cv-year:first-of-type { margin-top: 0; }
+
 // page headers (non-home academic pages)
 .page-title { font-size: 2rem; margin: 0 0 .3rem; }
 .page-subtitle { color: $muted; margin: 0 0 1.6rem; }

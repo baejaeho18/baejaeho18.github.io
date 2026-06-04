@@ -34,4 +34,32 @@
   if (toBottom) toBottom.addEventListener('click', function () {
     window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
   });
+
+  // Sub-tabs (e.g. the Explore page): switch panels in place via the hash
+  var subbar = document.getElementById('subtabs');
+  if (subbar) {
+    var tabs = [].slice.call(subbar.querySelectorAll('.subtab'));
+    var panels = [].slice.call(document.querySelectorAll('.subpanel'));
+    var activate = function (name) {
+      var matched = false;
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('data-tab') === name;
+        t.classList.toggle('is-active', on);
+        if (on) matched = true;
+      });
+      if (!matched && tabs.length) { name = tabs[0].getAttribute('data-tab'); tabs[0].classList.add('is-active'); }
+      panels.forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-panel') === name); });
+    };
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function (e) {
+        e.preventDefault();
+        var n = t.getAttribute('data-tab');
+        activate(n);
+        if (history.replaceState) { history.replaceState(null, '', '#' + n); } else { location.hash = n; }
+      });
+    });
+    activate((location.hash || '').replace('#', ''));
+    window.addEventListener('hashchange', function () { activate((location.hash || '').replace('#', '')); });
+  }
 })();
+
