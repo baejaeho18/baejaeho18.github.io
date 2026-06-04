@@ -2,6 +2,7 @@
 layout: page
 title: Awards & Honors
 permalink: /awards/
+parent: explore
 ---
 
 {% assign awards = site.data.cv.awards %}

@@ -3,6 +3,7 @@ layout: page
 title: Teaching
 subtitle: Teaching assistant & teaching-materials roles.
 permalink: /teaching/
+parent: explore
 ---
 
 {% assign grouped = site.data.cv.teaching | group_by_exp: "t", "t.start | slice: 0, 4" %}

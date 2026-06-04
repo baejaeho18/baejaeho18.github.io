@@ -5,13 +5,7 @@ main:
     url: /publications/
   - title: Conferences
     url: /conferences/
-  - title: Experience
-    url: /experience/
-  - title: Teaching
-    url: /teaching/
-  - title: Projects
-    url: /projects/
-  - title: Awards
-    url: /awards/
+  - title: Explore
+    url: /explore/
   - title: Blog
     url: /blog/

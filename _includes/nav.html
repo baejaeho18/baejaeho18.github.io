@@ -15,6 +15,7 @@
         {%- assign active = false -%}
         {%- if item.url == "/" and cur == "/" -%}{%- assign active = true -%}{%- endif -%}
         {%- if item.url != "/" and cur contains item.url -%}{%- assign active = true -%}{%- endif -%}
+        {%- if page.parent and item.url contains page.parent -%}{%- assign active = true -%}{%- endif -%}
         <li><a href="{{ link }}" class="{% if active %}is-active{% endif %}">{{ item.title }}</a></li>
       {%- endfor -%}
     </ul>

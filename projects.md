@@ -3,6 +3,7 @@ layout: page
 title: Projects
 subtitle: Selected things I have built.
 permalink: /projects/
+parent: explore
 ---
 
 {% assign projects = site.data.cv.projects %}

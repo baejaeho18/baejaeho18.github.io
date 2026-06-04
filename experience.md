@@ -3,6 +3,7 @@ layout: page
 title: Experience
 subtitle: Research, professional service, and military service.
 permalink: /experience/
+parent: explore
 ---
 
 {% assign exp = site.data.cv.experience %}
