@@ -72,6 +72,18 @@ experience:
 
 # ── Teaching ────────────────────────────────────────────────────────────────
 teaching:
+  - role: Teaching Assistant
+    course: System Programming
+    org: UNIST
+    start: "2026.03"
+    end: "2026.06"
+    url: "https://websec-lab.github.io/courses/2026s-cse251/"
+  - role: Teaching Assistant
+    course: Computer Security
+    org: UNIST
+    start: "2025.03"
+    end: "2025.06"
+    url: "https://websec-lab.github.io/courses/2025s-cse467/"
   - role: Teaching Materials Development Assistant
     course: System Programming
     org: Handong Global University
