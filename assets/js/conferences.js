@@ -37,7 +37,7 @@
   var deadlines = [];
   venues.forEach(function (v) {
     (v.deadlines || []).forEach(function (dl) {
-      deadlines.push({ v: v, label: dl.label, date: dl.date, inst: deadlineInstant(dl.date) });
+      deadlines.push({ v: v, label: dl.label, date: dl.date, notif: dl.notif, inst: deadlineInstant(dl.date) });
     });
   });
   var upcoming = deadlines.filter(function (x) { return x.inst.getTime() > now.getTime(); })
@@ -51,7 +51,7 @@
     upEl.innerHTML = upcoming.length ? upcoming.map(function (x) {
       var d = dday(x.inst);
       var conf = '🎤 ' + (x.v.conf_start ? esc(fmtRange(x.v.conf_start, x.v.conf_end)) : 'dates TBA') + (x.v.place ? ' · ' + esc(x.v.place) : '');
-      var notif = x.v.notification ? '🔔 ' + esc(fmtRange(x.v.notification)) : '🔔 notification TBA';
+      var notif = x.notif ? '🔔 ' + esc(fmtRange(x.notif)) : '🔔 notification TBA';
       return '<a class="conf-card" href="' + esc(x.v.link) + '" target="_blank" rel="noopener">' +
         '<span class="conf-dday ' + d.cls + '">' + d.txt + '</span>' +
         '<span class="conf-card__body">' +
@@ -82,8 +82,8 @@
     var ev = [];
     (v.deadlines || []).forEach(function (dl) {
       if (inWin(dl.date)) ev.push({ kind: 'sub', date: dl.date, pos: posOf(dl.date), label: dl.label, dd: dday(deadlineInstant(dl.date)) });
+      if (dl.notif && inWin(dl.notif)) ev.push({ kind: 'notif', date: dl.notif, pos: posOf(dl.notif), label: dl.label });
     });
-    if (v.notification && inWin(v.notification)) ev.push({ kind: 'notif', date: v.notification, pos: posOf(v.notification) });
     if (v.conf_start && inWin(v.conf_start)) {
       var ps = posOf(v.conf_start), pe = posOf(v.conf_end || v.conf_start, true);
       ev.push({ kind: 'conf', date: v.conf_start, end: v.conf_end, pos: ps, width: Math.min(100 - ps, Math.max(pe - ps, 2.6)) });
@@ -110,7 +110,7 @@
       var sub = e.kind === 'sub';
       var tip = esc(r.v.short + ' ' + r.v.year) + ' · ' + (sub
         ? 'Submission (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + ' AoE · ' + e.dd.txt
-        : 'Notification · ' + esc(fmtDay(e.date)));
+        : 'Notification (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)));
       return '<span class="g-dot ' + (sub ? 'g-dot--sub ' + e.dd.cls : 'g-dot--notif') + '" style="left:' + e.pos.toFixed(2) + '%" title="' + tip + '"></span>';
     }).join('');
     return '<div class="gantt__row"><div class="gantt__label"><span>' + esc(r.v.short) + ' ' + esc(r.v.year) + '</span></div>' +
