@@ -1,6 +1,6 @@
 <aside class="blog-sidebar">
   <div class="widget">
-    <h3 class="widget__title">Categories</h3>
+    <h3 class="widget__title"><a href="{{ '/blog/categories/' | relative_url }}">Categories</a></h3>
     <ul class="widget__list">
       {%- assign cats = site.categories | sort -%}
       {%- for cat in cats -%}
@@ -10,7 +10,7 @@
   </div>
 
   <div class="widget">
-    <h3 class="widget__title">Tags</h3>
+    <h3 class="widget__title"><a href="{{ '/blog/tags/' | relative_url }}">Tags</a></h3>
     <div class="widget__tags">
       {%- assign tags = site.tags | sort -%}
       {%- for tag in tags -%}
@@ -20,7 +20,7 @@
   </div>
 
   <div class="widget">
-    <h3 class="widget__title">Recent posts</h3>
+    <h3 class="widget__title"><a href="{{ '/blog/' | relative_url }}">Recent posts</a></h3>
     <ul class="widget__list widget__list--recent">
       {%- for post in site.posts limit: 5 -%}
       <li><a href="{{ post.url | relative_url }}">{{ post.title | remove: '"' }}</a></li>
@@ -29,9 +29,12 @@
   </div>
 
   <div class="widget">
-    <h3 class="widget__title">Archive</h3>
+    <h3 class="widget__title"><a href="{{ '/blog/archive/' | relative_url }}">Archive</a></h3>
     <ul class="widget__list">
-      <li><a href="{{ '/blog/archive/' | relative_url }}">Browse by year →</a></li>
+      {%- assign byyear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse -%}
+      {%- for group in byyear -%}
+      <li><a href="{{ '/blog/archive/#y' | append: group.name | relative_url }}">{{ group.name }}</a> <span>{{ group.items.size }}</span></li>
+      {%- endfor -%}
     </ul>
   </div>
 </aside>

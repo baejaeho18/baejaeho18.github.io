@@ -15,12 +15,31 @@ hero: true
       {%- if paginator.total_pages > 1 -%}
       <nav class="pagination">
         {%- if paginator.previous_page -%}
-        <a class="pagination__prev" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
-        {%- else -%}<span class="pagination__prev is-disabled">← Newer</span>{%- endif -%}
-        <span class="pagination__count">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+        <a class="pg-arrow" href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
+        {%- else -%}<span class="pg-arrow is-disabled">← Newer</span>{%- endif -%}
+
+        <span class="pg-nums">
+          {%- assign lo = paginator.page | minus: 2 -%}
+          {%- assign hi = paginator.page | plus: 2 -%}
+          {%- assign last_shown = 0 -%}
+          {%- for p in (1..paginator.total_pages) -%}
+            {%- assign show = false -%}
+            {%- if p == 1 or p == paginator.total_pages -%}{%- assign show = true -%}{%- endif -%}
+            {%- if p >= lo and p <= hi -%}{%- assign show = true -%}{%- endif -%}
+            {%- if show -%}
+              {%- assign gap = p | minus: last_shown -%}
+              {%- if gap > 1 -%}<span class="pg-ellipsis">…</span>{%- endif -%}
+              {%- if p == 1 -%}{%- assign u = '/blog/' -%}{%- else -%}{%- capture u -%}/blog/page{{ p }}/{%- endcapture -%}{%- endif -%}
+              {%- if p == paginator.page -%}<span class="pg-num is-current">{{ p }}</span>
+              {%- else -%}<a class="pg-num" href="{{ u | relative_url }}">{{ p }}</a>{%- endif -%}
+              {%- assign last_shown = p -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </span>
+
         {%- if paginator.next_page -%}
-        <a class="pagination__next" href="{{ paginator.next_page_path | relative_url }}">Older →</a>
-        {%- else -%}<span class="pagination__next is-disabled">Older →</span>{%- endif -%}
+        <a class="pg-arrow" href="{{ paginator.next_page_path | relative_url }}">Older →</a>
+        {%- else -%}<span class="pg-arrow is-disabled">Older →</span>{%- endif -%}
       </nav>
       {%- endif -%}
     </div>

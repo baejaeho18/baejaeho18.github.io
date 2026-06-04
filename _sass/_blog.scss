@@ -33,14 +33,26 @@
 .post-card__excerpt { color: $body; font-size: .98rem; margin-bottom: .8rem; overflow-wrap: anywhere; word-break: break-word; }
 .post-card__more { font-size: .88rem; font-weight: 600; }
 
-// ── Pagination ──────────────────────────────────────────
+// ── Pagination (numbered, windowed) ─────────────────────
 .pagination {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid $line;
   font-size: .9rem; font-weight: 500;
 }
-.pagination__count { color: $muted; }
-.pagination .is-disabled { color: $line; cursor: default; }
+.pg-arrow { white-space: nowrap; color: $accent; }
+.pg-arrow.is-disabled { color: $line; cursor: default; pointer-events: none; }
+.pg-nums { display: flex; align-items: center; gap: .2rem; flex-wrap: wrap; justify-content: center; }
+.pg-num {
+  display: inline-grid; place-items: center; min-width: 2rem; height: 2rem; padding: 0 .4rem;
+  border-radius: 8px; color: $body; font-variant-numeric: tabular-nums;
+}
+a.pg-num:hover { background: $bg-soft; color: $accent; text-decoration: none; }
+.pg-num.is-current { background: $brand; color: #fff; }
+.pg-ellipsis { padding: 0 .15rem; color: $muted; }
+
+@include sm {
+  .pagination { flex-direction: column; }
+}
 
 // ── Sidebar widgets ─────────────────────────────────────
 .blog-sidebar { position: sticky; top: 90px; }
@@ -49,6 +61,8 @@
   font-size: .8rem; text-transform: uppercase; letter-spacing: .08em;
   color: $muted; margin: 0 0 .8rem; padding-bottom: .5rem; border-bottom: 1px solid $line;
 }
+.widget__title a { color: inherit; }
+.widget__title a:hover { color: $accent; text-decoration: none; }
 .widget__list { list-style: none; padding: 0; margin: 0; }
 .widget__list li {
   display: flex; justify-content: space-between; align-items: center;
