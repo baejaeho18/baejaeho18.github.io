@@ -37,10 +37,11 @@
   var deadlines = [];
   venues.forEach(function (v) {
     (v.deadlines || []).forEach(function (dl) {
-      deadlines.push({ v: v, label: dl.label, date: dl.date, notif: dl.notif, inst: deadlineInstant(dl.date) });
+      deadlines.push({ v: v, label: dl.label, date: dl.date, notif: dl.notif, notif_tba: dl.notif_tba, tba: dl.tba, inst: deadlineInstant(dl.date) });
     });
   });
-  var upcoming = deadlines.filter(function (x) { return x.inst.getTime() > now.getTime(); })
+  // only confirmed (non-estimated) deadlines get a precise D-day countdown
+  var upcoming = deadlines.filter(function (x) { return !x.tba && x.inst.getTime() > now.getTime(); })
                           .sort(function (a, b) { return a.inst - b.inst; });
 
   var tzNote = document.getElementById('conf-tznote');
@@ -50,8 +51,8 @@
   if (upEl) {
     upEl.innerHTML = upcoming.length ? upcoming.map(function (x) {
       var d = dday(x.inst);
-      var conf = '🎤 ' + (x.v.conf_start ? esc(fmtRange(x.v.conf_start, x.v.conf_end)) : 'dates TBA') + (x.v.place ? ' · ' + esc(x.v.place) : '');
-      var notif = x.notif ? '🔔 ' + esc(fmtRange(x.notif)) : '🔔 notification TBA';
+      var conf = '🎤 ' + (x.v.conf_start ? esc(fmtRange(x.v.conf_start, x.v.conf_end)) + (x.v.conf_tba ? ' (TBA)' : '') : 'dates TBA') + (x.v.place && x.v.place !== 'TBA' ? ' · ' + esc(x.v.place) : '');
+      var notif = x.notif ? '🔔 ' + esc(fmtRange(x.notif)) + (x.notif_tba ? ' (TBA)' : '') : '🔔 notification TBA';
       return '<a class="conf-card" href="' + esc(x.v.link) + '" target="_blank" rel="noopener">' +
         '<span class="conf-dday ' + d.cls + '">' + d.txt + '</span>' +
         '<span class="conf-card__body">' +
@@ -81,16 +82,18 @@
   venues.forEach(function (v) {
     var ev = [];
     (v.deadlines || []).forEach(function (dl) {
-      if (inWin(dl.date)) ev.push({ kind: 'sub', date: dl.date, pos: posOf(dl.date), label: dl.label, dd: dday(deadlineInstant(dl.date)) });
-      if (dl.notif && inWin(dl.notif)) ev.push({ kind: 'notif', date: dl.notif, pos: posOf(dl.notif), label: dl.label });
+      if (inWin(dl.date)) ev.push({ kind: 'sub', date: dl.date, pos: posOf(dl.date), label: dl.label, dd: dday(deadlineInstant(dl.date)), tba: dl.tba });
+      if (dl.notif && inWin(dl.notif)) ev.push({ kind: 'notif', date: dl.notif, pos: posOf(dl.notif), label: dl.label, tba: dl.notif_tba });
     });
     if (v.conf_start && inWin(v.conf_start)) {
       var ps = posOf(v.conf_start), pe = posOf(v.conf_end || v.conf_start, true);
-      ev.push({ kind: 'conf', date: v.conf_start, end: v.conf_end, pos: ps, width: Math.min(100 - ps, Math.max(pe - ps, 2.6)) });
+      ev.push({ kind: 'conf', date: v.conf_start, end: v.conf_end, pos: ps, width: Math.min(100 - ps, Math.max(pe - ps, 2.6)), tba: v.conf_tba });
     }
-    if (ev.length) rows.push({ v: v, ev: ev, order: Math.min.apply(null, ev.map(function (e) { return e.pos; })) });
+    if (ev.length) rows.push({ v: v, ev: ev });
   });
-  // rows keep the order of _data/conferences.yml (no re-sort)
+  // sort rows by conference (start) date, earliest first
+  function confKey(v) { return v.conf_start ? dayDate(v.conf_start).getTime() : Infinity; }
+  rows.sort(function (a, b) { return confKey(a.v) - confKey(b.v); });
 
   // header months
   var head = '<div class="gantt__row gantt__row--head"><div class="gantt__label"></div><div class="gantt__track gantt__months">';
@@ -103,24 +106,22 @@
   // body rows
   var body = rows.map(function (r) {
     var marks = r.ev.map(function (e) {
+      var tbaTip = e.tba ? ' — TBA (estimated)' : '';
       if (e.kind === 'conf') {
-        return '<span class="g-bar" style="left:' + e.pos.toFixed(2) + '%;width:' + e.width.toFixed(2) + '%" ' +
-          'title="' + esc(r.v.short + ' ' + r.v.year) + ' · Conference · ' + esc(fmtRange(e.date, e.end)) + '"></span>';
+        return '<span class="g-bar' + (e.tba ? ' is-tba' : '') + '" style="left:' + e.pos.toFixed(2) + '%;width:' + e.width.toFixed(2) + '%" ' +
+          'title="' + esc(r.v.short + ' ' + r.v.year) + ' · Conference · ' + esc(fmtRange(e.date, e.end)) + tbaTip + '"></span>';
       }
       var sub = e.kind === 'sub';
       var tip = esc(r.v.short + ' ' + r.v.year) + ' · ' + (sub
-        ? 'Submission (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + ' AoE · ' + e.dd.txt
-        : 'Notification (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)));
-      return '<span class="g-dot ' + (sub ? 'g-dot--sub ' + e.dd.cls : 'g-dot--notif') + '" style="left:' + e.pos.toFixed(2) + '%" title="' + tip + '"></span>';
+        ? 'Submission (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + ' AoE' + (e.tba ? tbaTip : ' · ' + e.dd.txt)
+        : 'Notification (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + tbaTip);
+      return '<span class="g-dot ' + (sub ? 'g-dot--sub' : 'g-dot--notif') + (e.tba ? ' is-tba' : '') + '" style="left:' + e.pos.toFixed(2) + '%" title="' + tip + '"></span>';
     }).join('');
     return '<div class="gantt__row"><div class="gantt__label"><span>' + esc(r.v.short) + ' ' + esc(r.v.year) + '</span></div>' +
            '<div class="gantt__track">' + marks + '</div></div>';
   }).join('');
 
-  var todayFrac = (monthsSince(now) + (now.getDate() - 1) / daysInMonth(now)) / 12;
-  var today = '<span class="gantt__today" style="left:calc(var(--gantt-label) + (100% - var(--gantt-label)) * ' + todayFrac.toFixed(4) + ')" title="Today"></span>';
-
   calEl.innerHTML = '<div class="gantt-scroll"><div class="gantt">' + head +
-    '<div class="gantt__body">' + today + (body || '<div class="conf-empty" style="padding:1rem">No events in this window.</div>') + '</div>' +
+    '<div class="gantt__body">' + (body || '<div class="conf-empty" style="padding:1rem">No events in this window.</div>') + '</div>' +
     '</div></div>';
 })();

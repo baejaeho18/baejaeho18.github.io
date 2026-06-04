@@ -3,10 +3,11 @@
   display: flex; flex-wrap: wrap; gap: 1.2rem;
   font-size: .85rem; color: $muted; margin: 0 0 1.8rem;
 }
-.conf-legend i.lg { display: inline-block; vertical-align: middle; margin-right: .4rem; }
-.lg--sub   { width: 11px; height: 11px; border-radius: 50%; background: $brand; }
-.lg--notif { width: 11px; height: 11px; border-radius: 50%; background: #fff; border: 2px solid #b26a00; }
-.lg--conf  { width: 24px; height: 8px; border-radius: 999px; background: rgba($brand, .85); }
+.conf-legend i.lg { display: inline-block; vertical-align: middle; margin-right: .45rem; }
+.lg--sub   { width: 13px; height: 13px; border-radius: 50%; background: #2563eb; }
+.lg--notif { width: 12px; height: 12px; border-radius: 2px; background: #f59e0b; transform: rotate(45deg); }
+.lg--conf  { width: 24px; height: 9px; border-radius: 999px; background: #10b981; }
+.lg--tba   { width: 13px; height: 13px; border-radius: 50%; background: #fff; border: 2px dashed #9ca3af; }
 
 .conf-tznote { font-size: .82rem; color: $muted; margin: -.3rem 0 1rem; }
 .conf-source { font-size: .8rem; color: $muted; margin-top: 2rem; }
@@ -76,25 +77,27 @@
     $line calc(100% / 12 - 1px), $line calc(100% / 12));
 }
 
+// markers — distinct by colour AND shape:
+//   submission = blue circle · notification = amber diamond · conference = green bar
 .g-dot {
-  position: absolute; top: 50%; transform: translate(-50%, -50%);
-  width: 12px; height: 12px; border-radius: 50%; z-index: 2;
-  border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(16,24,40,.12);
+  position: absolute; top: 50%; z-index: 2;
+  width: 14px; height: 14px;
+  border: 2.5px solid #fff; box-shadow: 0 1px 3px rgba(16,24,40,.35);
 }
-.g-dot--sub { background: $brand; }
-.g-dot--sub.is-soon   { background: #d97706; }
-.g-dot--sub.is-urgent { background: #d92d20; }
-.g-dot--notif { background: #fff; border-color: #b26a00; }
+.g-dot--sub   { transform: translate(-50%, -50%); border-radius: 50%; background: #2563eb; }
+.g-dot--notif { transform: translate(-50%, -50%) rotate(45deg); border-radius: 3px; width: 13px; height: 13px; background: #f59e0b; }
+.g-dot.is-tba { background: #fff; border-style: dashed; border-color: #9ca3af; box-shadow: none; }
 
 .g-bar {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  height: 10px; border-radius: 999px; z-index: 1;
-  background: linear-gradient(90deg, rgba($brand,.95), rgba($brand,.7));
-  min-width: 20px;
-  box-shadow: 0 0 0 1px rgba(255,255,255,.85), 0 1px 2px rgba(16,24,40,.15);
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 1;
+  height: 12px; border-radius: 999px; min-width: 22px;
+  background: #10b981;
+  box-shadow: 0 0 0 1.5px #fff, 0 1px 3px rgba(16,24,40,.25);
 }
-
-.gantt__today { position: absolute; top: 0; bottom: 0; width: 2px; background: #d92d20; opacity: .55; z-index: 3; pointer-events: none; }
+.g-bar.is-tba {
+  background: repeating-linear-gradient(45deg, #eef0f2, #eef0f2 4px, #f7f8fa 4px, #f7f8fa 8px);
+  border: 1.5px dashed #9ca3af; box-shadow: none;
+}
 
 .conf-hint { font-size: .8rem; color: $muted; margin: .6rem 0 0; }
 

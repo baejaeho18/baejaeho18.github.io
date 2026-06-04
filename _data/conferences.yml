@@ -3,7 +3,10 @@
 #  Sources: official CFPs + https://sec-deadlines.github.io/   (update each cycle)
 #  Submission deadlines are AoE (Anywhere-on-Earth, UTC-12), 23:59.
 #  Each deadline round carries its own `notif` (author-notification date).
-#  Leave notif / conf dates "" when not yet announced (shown as TBA).
+#  Flags mark estimated/unannounced dates (rendered as TBA on the timeline):
+#    tba: true        → the submission date is an estimate (last year + 1)
+#    notif_tba: true  → the notification date is an estimate
+#    conf_tba: true   → the conference dates are an estimate
 # ──────────────────────────────────────────────────────────────────────────
 source: "https://sec-deadlines.github.io/"
 
@@ -15,10 +18,11 @@ venues:
     link: "https://sp2027.ieee-security.org/"
     place: "Montreal, Canada"
     deadlines:
-      - { date: "2026-06-11", label: "1st", notif: "" }
-      - { date: "2026-11-17", label: "2nd", notif: "" }
-    conf_start: ""
-    conf_end: ""
+      - { date: "2026-06-11", label: "1st", notif: "2026-09-10", notif_tba: true }
+      - { date: "2026-11-17", label: "2nd", notif: "2027-02-16", notif_tba: true }
+    conf_start: "2027-05-17"
+    conf_end: "2027-05-20"
+    conf_tba: true
 
   - name: "NDSS"
     short: "NDSS"
@@ -39,8 +43,8 @@ venues:
     link: "https://www.sigsac.org/ccs/CCS2026/"
     place: "The Hague, The Netherlands"
     deadlines:
-      - { date: "2026-01-14", label: "1st", notif: "" }
-      - { date: "2026-04-29", label: "2nd", notif: "" }
+      - { date: "2026-01-14", label: "1st", notif: "2026-04-01", notif_tba: true }
+      - { date: "2026-04-29", label: "2nd", notif: "2026-07-29", notif_tba: true }
     conf_start: "2026-11-15"
     conf_end: "2026-11-19"
 
@@ -59,13 +63,14 @@ venues:
   - name: "The Web Conference (WWW)"
     short: "WWW"
     rank: "A*"
-    year: 2026
+    year: 2027
     link: "https://www2026.thewebconf.org"
-    place: "Dubai, United Arab Emirates"
+    place: "TBA"
     deadlines:
-      - { date: "2025-10-07", label: "Full", notif: "2026-01-13" }
-    conf_start: "2026-04-13"
-    conf_end: "2026-04-17"
+      - { date: "2026-10-07", label: "Full", notif: "2027-01-13", tba: true, notif_tba: true }
+    conf_start: "2027-04-13"
+    conf_end: "2027-04-17"
+    conf_tba: true
 
   - name: "ACM IMC"
     short: "IMC"
@@ -109,8 +114,8 @@ venues:
     link: "https://sites.google.com/di.uniroma1.it/esorics2026/"
     place: "Rome, Italy"
     deadlines:
-      - { date: "2026-01-09", label: "1st", notif: "" }
-      - { date: "2026-04-21", label: "2nd", notif: "" }
+      - { date: "2026-01-09", label: "1st", notif: "2026-03-20", notif_tba: true }
+      - { date: "2026-04-21", label: "2nd", notif: "2026-06-30", notif_tba: true }
     conf_start: "2026-09-14"
     conf_end: "2026-09-18"
 

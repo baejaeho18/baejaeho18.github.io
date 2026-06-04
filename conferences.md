@@ -17,9 +17,10 @@ permalink: /conferences/
   <span><i class="lg lg--sub"></i> Submission deadline</span>
   <span><i class="lg lg--notif"></i> Notification</span>
   <span><i class="lg lg--conf"></i> Conference period</span>
+  <span><i class="lg lg--tba"></i> TBA (estimated: last year + 1)</span>
 </div>
 <div id="conf-calendar" class="conf-calendar"></div>
-<p class="conf-hint">Each row is a venue; dots mark single dates, bars mark conference periods. The red line is today. Hover any marker for details.</p>
+<p class="conf-hint">Rows are ordered by conference date. Blue circle = submission deadline, amber diamond = notification, green bar = conference period; dashed-gray = estimated (TBA). Hover any marker for details.</p>
 </section>
 
 <p class="conf-source">Data adapted from <a href="https://sec-deadlines.github.io/" target="_blank" rel="noopener">sec-deadlines.github.io</a>. Deadlines are AoE (UTC−12); notification dates are shown when announced. Edit <code>_data/conferences.yml</code> to update.</p>
