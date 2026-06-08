@@ -147,7 +147,7 @@
       if (e.kind === 'conf') {
         var where = (r.p.v.place && r.p.v.place !== 'TBA') ? ' · ' + esc(r.p.v.place) : '';
         return '<span class="g-bar' + (e.est ? ' is-tba' : '') + '" tabindex="0" style="left:' + e.pos.toFixed(2) + '%;width:' + e.width.toFixed(2) + '%" ' +
-          'data-tip="' + esc(r.p.v.short + ' ' + r.p.year) + ' · Conference · ' + esc(fmtRangeNoYear(e.date, e.end)) + where + estTip + '"></span>';
+          'data-tip="' + esc(r.p.v.short + ' ' + r.p.year) + ' · Conference · ' + esc(fmtRangeNoYear(e.date, e.end)) + estTip + where + '"></span>';
       }
       var sub = e.kind === 'sub';
       var tip = esc(r.p.v.short + ' ' + r.p.year) + ' · ' + (sub
