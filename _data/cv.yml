@@ -9,9 +9,10 @@ about:
     I am **Jaeho Bae (배재호)**, an M.S. student in Computer Science and
     Engineering at **UNIST**. I love reading, learning, and programming.
   - >-
-    My research interests center on **software security** — security
-    vulnerability detection, bytecode analysis, and the application of
-    **generative AI** to software engineering. I previously studied AI and
+    At the **Web Security (WebSec) Lab**, I work on **web security and
+    privacy** — analyzing **JavaScript** and web applications to uncover
+    vulnerabilities and protect users' personal data. I am also interested in
+    the interplay between **AI and security**. I previously studied AI and
     Computer Science & Engineering at **Handong Global University**.
 
 # Research interests (chips on the homepage)
@@ -32,7 +33,7 @@ education:
     location: Ulsan, South Korea
     start: "2025.03"
     end: "Present"
-    note: ""
+    note: 'Web Security (WebSec) Lab — Advisor: <a href="https://seongil-wi.github.io/" target="_blank" rel="noopener">Seongil Wi</a>'
   - degree: B.S. in Artificial Intelligence · Computer Science and Engineering
     institution: Handong Global University
     location: Pohang, South Korea
@@ -45,6 +46,8 @@ experience:
   - role: Research Intern
     org: WebSec — Web Security Lab, UNIST
     url: "https://websec-lab.github.io/"
+    advisor: Seongil Wi
+    advisor_url: "https://seongil-wi.github.io/"
     start: "2024.09"
     end: "2025.02"
     type: research
@@ -52,6 +55,8 @@ experience:
   - role: Undergraduate Research Student
     org: ISEL — Intelligent Software Engineering Lab, HGU
     url: "https://isel.handong.edu/"
+    advisor: Jaechang Nam
+    advisor_url: "https://lifove.github.io/"
     start: "2022.06"
     end: "2023.12"
     type: research
