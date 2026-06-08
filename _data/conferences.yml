@@ -144,13 +144,6 @@ venues:
     deadlines: []
     conf_start: "2026-08-12"
     conf_end: "2026-08-14"
-
-  - name: "ASIA CCS"
-    short: "AsiaCCS"
-    rank: "A"
-    year: 2026
-    link: "https://asiaccs2026.cse.iitkgp.ac.in/"
-    place: "Bangalore, India"
-    deadlines: []
-    conf_start: "2026-06-01"
-    conf_end: "2026-06-05"
+  # AsiaCCS 2026 (Jun 1–5, Bangalore) has concluded; its 2027 edition
+  # (Jul 12–16, Macau) is tracked by the main "ASIA CCS" entry above and will
+  # enter the 12-month window automatically once it is < 12 months out.
