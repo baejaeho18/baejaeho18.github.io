@@ -103,8 +103,9 @@
 // custom marker tooltip (replaces the unreliable native title attribute)
 .conf-tip {
   position: absolute; z-index: 200; max-width: 280px;
-  background: $ink; color: #fff; font-size: .8rem; line-height: 1.45;
-  padding: .45rem .65rem; border-radius: 6px; box-shadow: $shadow-lg;
+  background: #fff; color: $ink; font-size: .78rem; line-height: 1.4;
+  padding: .3rem .55rem; border: 1px solid $line; border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(16,24,40,.16);
   pointer-events: none;
 }
 .conf-tip[hidden] { display: none; }

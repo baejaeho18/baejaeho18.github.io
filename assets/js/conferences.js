@@ -25,6 +25,14 @@
     if (a.getMonth() === b.getMonth()) return MONTHS[a.getMonth()] + ' ' + a.getDate() + '–' + b.getDate() + ', ' + a.getFullYear();
     return MONTHS[a.getMonth()] + ' ' + a.getDate() + ' – ' + MONTHS[b.getMonth()] + ' ' + b.getDate() + ', ' + b.getFullYear();
   }
+  function fmtRangeNoYear(s, e) {
+    if (!s) return 'TBA';
+    var a = dayDate(s);
+    if (!e || e === s) return MONTHS[a.getMonth()] + ' ' + a.getDate();
+    var b = dayDate(e);
+    if (a.getMonth() === b.getMonth()) return MONTHS[a.getMonth()] + ' ' + a.getDate() + '–' + b.getDate();
+    return MONTHS[a.getMonth()] + ' ' + a.getDate() + ' – ' + MONTHS[b.getMonth()] + ' ' + b.getDate();
+  }
   function dday(inst) {
     var ms = inst.getTime() - now.getTime();
     if (ms <= 0) return { txt: 'closed', cls: 'is-closed' };
@@ -80,12 +88,13 @@
   if (upEl) {
     upEl.innerHTML = upcoming.length ? upcoming.map(function (x) {
       var p = x.p, d = dday(x.inst);
-      var conf = '🎤 ' + (p.conf_start ? esc(fmtRange(p.conf_start, p.conf_end)) + (p.confEst ? ' (TBA)' : '') : 'dates TBA') + (p.v.place && p.v.place !== 'TBA' ? ' · ' + esc(p.v.place) : '');
+      var conf = '🎤 ' + (p.conf_start ? esc(fmtRangeNoYear(p.conf_start, p.conf_end)) + (p.confEst ? ' (TBA)' : '') : 'dates TBA') + (p.v.place && p.v.place !== 'TBA' ? ' · ' + esc(p.v.place) : '');
       var notif = x.notif ? '🔔 ' + esc(fmtRange(x.notif)) + (x.notifEst ? ' (TBA)' : '') : '🔔 notification TBA';
+      var round = (x.label && x.label !== 'Full') ? ' <span class="conf-round">' + esc(x.label) + '</span>' : '';
       return '<a class="conf-card" href="' + esc(p.v.link) + '" target="_blank" rel="noopener">' +
         '<span class="conf-dday ' + d.cls + '">' + d.txt + '</span>' +
         '<span class="conf-card__body">' +
-          '<span class="conf-card__head"><strong>' + esc(p.v.short) + ' ' + esc(p.year) + '</strong> <span class="conf-round">' + esc(x.label) + '</span></span>' +
+          '<span class="conf-card__head"><strong>' + esc(p.v.short) + ' ' + esc(p.year) + '</strong>' + round + '</span>' +
           '<span class="conf-card__meta">📝 ' + esc(fmtDay(x.date)) + ' (AoE) &nbsp;·&nbsp; ' + notif + ' &nbsp;·&nbsp; ' + conf + '</span>' +
         '</span></a>';
     }).join('') : '<p class="conf-empty">No upcoming confirmed deadlines — see the timeline below.</p>';
@@ -133,15 +142,17 @@
 
   var body = rows.map(function (r) {
     var marks = r.ev.map(function (e) {
-      var estTip = e.est ? ' — estimated (TBA)' : '';
+      var estTip = e.est ? ' (TBA)' : '';
+      var lbl = (e.label && e.label !== 'Full') ? ' (' + esc(e.label) + ')' : '';
       if (e.kind === 'conf') {
+        var where = (r.p.v.place && r.p.v.place !== 'TBA') ? ' · ' + esc(r.p.v.place) : '';
         return '<span class="g-bar' + (e.est ? ' is-tba' : '') + '" tabindex="0" style="left:' + e.pos.toFixed(2) + '%;width:' + e.width.toFixed(2) + '%" ' +
-          'data-tip="' + esc(r.p.v.short + ' ' + r.p.year) + ' · Conference · ' + esc(fmtRange(e.date, e.end)) + estTip + '"></span>';
+          'data-tip="' + esc(r.p.v.short + ' ' + r.p.year) + ' · Conference · ' + esc(fmtRangeNoYear(e.date, e.end)) + where + estTip + '"></span>';
       }
       var sub = e.kind === 'sub';
       var tip = esc(r.p.v.short + ' ' + r.p.year) + ' · ' + (sub
-        ? 'Submission (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + ' AoE' + (e.est ? estTip : ' · ' + e.dd.txt)
-        : 'Notification (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + estTip);
+        ? 'Submission' + lbl + ' · ' + esc(fmtDay(e.date)) + ' AoE' + (e.est ? estTip : ' · ' + e.dd.txt)
+        : 'Notification' + lbl + ' · ' + esc(fmtDay(e.date)) + estTip);
       return '<span class="g-dot ' + (sub ? 'g-dot--sub' : 'g-dot--notif') + (e.est ? ' is-tba' : '') + '" tabindex="0" style="left:' + e.pos.toFixed(2) + '%" data-tip="' + tip + '"></span>';
     }).join('');
     return '<div class="gantt__row"><div class="gantt__label"><span>' + esc(r.p.v.short) + ' ' + esc(r.p.year) + '</span></div>' +
