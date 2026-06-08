@@ -16,13 +16,14 @@ about:
 
 # Research interests (chips on the homepage)
 interests:
-  - Software Security
   - Web Security
-  - AI ⇄ Security        # "AI for Security" & "Security for AI", both directions
+  - Software Security
+  - Privacy & Data Protection
   - Vulnerability Detection
+  - JavaScript Analysis
   - Bytecode Analysis
-  - Generative AI for SE
-  - Computer Systems
+  - AI ⇄ Security        # "AI for Security" & "Security for AI", both directions
+  - AI ⇄ SE         # "AI for Software Engineering" & "Software Engineering for AI", both directions
 
 # ── Education ───────────────────────────────────────────────────────────────
 education:

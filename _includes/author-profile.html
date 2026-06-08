@@ -4,7 +4,16 @@
     <h1 class="profile__name">{{ site.author.name }}</h1>
     <p class="profile__korean">{{ site.author.korean_name }}</p>
     <p class="profile__title">{{ site.author.title }}</p>
-    <p class="profile__meta">{{ site.author.affiliation }}<br>{{ site.author.location }}</p>
+    <p class="profile__meta">
+      {{ site.author.affiliation }}<br>
+      {%- if site.author.lab and site.author.lab != "" -%}
+      {%- if site.author.lab_url and site.author.lab_url != "" -%}<a href="{{ site.author.lab_url }}" target="_blank" rel="noopener">{{ site.author.lab }}</a>{%- else -%}{{ site.author.lab }}{%- endif -%}<br>
+      {%- endif -%}
+      {%- if site.author.advisor and site.author.advisor != "" -%}
+      Advised by {% if site.author.advisor_url and site.author.advisor_url != "" %}<a href="{{ site.author.advisor_url }}" target="_blank" rel="noopener">{{ site.author.advisor }}</a>{% else %}{{ site.author.advisor }}{% endif %}<br>
+      {%- endif -%}
+      {{ site.author.location }}
+    </p>
 
     <ul class="profile__social">
       {%- if site.social.github and site.social.github != "" -%}
