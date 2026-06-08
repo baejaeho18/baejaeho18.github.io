@@ -135,14 +135,14 @@
     var marks = r.ev.map(function (e) {
       var estTip = e.est ? ' — estimated (TBA)' : '';
       if (e.kind === 'conf') {
-        return '<span class="g-bar' + (e.est ? ' is-tba' : '') + '" style="left:' + e.pos.toFixed(2) + '%;width:' + e.width.toFixed(2) + '%" ' +
-          'title="' + esc(r.p.v.short + ' ' + r.p.year) + ' · Conference · ' + esc(fmtRange(e.date, e.end)) + estTip + '"></span>';
+        return '<span class="g-bar' + (e.est ? ' is-tba' : '') + '" tabindex="0" style="left:' + e.pos.toFixed(2) + '%;width:' + e.width.toFixed(2) + '%" ' +
+          'data-tip="' + esc(r.p.v.short + ' ' + r.p.year) + ' · Conference · ' + esc(fmtRange(e.date, e.end)) + estTip + '"></span>';
       }
       var sub = e.kind === 'sub';
       var tip = esc(r.p.v.short + ' ' + r.p.year) + ' · ' + (sub
         ? 'Submission (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + ' AoE' + (e.est ? estTip : ' · ' + e.dd.txt)
         : 'Notification (' + esc(e.label) + ') · ' + esc(fmtDay(e.date)) + estTip);
-      return '<span class="g-dot ' + (sub ? 'g-dot--sub' : 'g-dot--notif') + (e.est ? ' is-tba' : '') + '" style="left:' + e.pos.toFixed(2) + '%" title="' + tip + '"></span>';
+      return '<span class="g-dot ' + (sub ? 'g-dot--sub' : 'g-dot--notif') + (e.est ? ' is-tba' : '') + '" tabindex="0" style="left:' + e.pos.toFixed(2) + '%" data-tip="' + tip + '"></span>';
     }).join('');
     return '<div class="gantt__row"><div class="gantt__label"><span>' + esc(r.p.v.short) + ' ' + esc(r.p.year) + '</span></div>' +
            '<div class="gantt__track">' + marks + '</div></div>';
@@ -151,4 +151,44 @@
   calEl.innerHTML = '<div class="gantt-scroll"><div class="gantt">' + head +
     '<div class="gantt__body">' + (body || '<div class="conf-empty" style="padding:1rem">No events in this window.</div>') + '</div>' +
     '</div></div>';
+
+  // ── Custom tooltip ────────────────────────────────────────────────────────
+  // The native `title` attribute is unreliable across machines (no touch
+  // devices, tiny hover targets, inconsistent timing), so render our own.
+  var tip = document.createElement('div');
+  tip.className = 'conf-tip';
+  tip.hidden = true;
+  document.body.appendChild(tip);
+
+  function showTip(el) {
+    var txt = el.getAttribute('data-tip');
+    if (!txt) return;
+    tip.textContent = txt;
+    tip.hidden = false;
+    var r = el.getBoundingClientRect();
+    var t = tip.getBoundingClientRect();
+    var left = r.left + r.width / 2 - t.width / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - t.width - 8));
+    var top = r.top - t.height - 10;
+    if (top < 4) top = r.bottom + 10;            // flip below if no room above
+    tip.style.left = (left + window.pageXOffset) + 'px';
+    tip.style.top = (top + window.pageYOffset) + 'px';
+  }
+  function hideTip() { tip.hidden = true; }
+
+  var scroller = calEl.querySelector('.gantt-scroll') || calEl;
+  function target(e) { return e.target.closest ? e.target.closest('[data-tip]') : null; }
+  scroller.addEventListener('mouseover', function (e) { var m = target(e); if (m) showTip(m); });
+  scroller.addEventListener('mouseout',  function (e) { if (target(e)) hideTip(); });
+  scroller.addEventListener('focusin',   function (e) { var m = target(e); if (m) showTip(m); });
+  scroller.addEventListener('focusout',  hideTip);
+  // touch / click: tap a marker to toggle, tap elsewhere to dismiss
+  scroller.addEventListener('click', function (e) {
+    var m = target(e);
+    if (m) { if (tip.hidden) showTip(m); else hideTip(); }
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('[data-tip]') && e.target !== tip) hideTip();
+  });
+  window.addEventListener('scroll', hideTip, { passive: true });
 })();

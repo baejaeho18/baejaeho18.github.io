@@ -77,9 +77,10 @@
 //   submission = cyan circle · notification = amber diamond · conference = teal bar
 .g-dot {
   position: absolute; top: 50%; z-index: 2;
-  width: 14px; height: 14px;
+  width: 14px; height: 14px; cursor: pointer;
   border: 2.5px solid #fff; box-shadow: 0 1px 3px rgba(16,24,40,.3);
 }
+.g-dot:focus-visible, .g-bar:focus-visible { outline: 2px solid $accent; outline-offset: 2px; }
 .g-dot--sub   { transform: translate(-50%, -50%); border-radius: 50%; background: #0a93c9; }
 .g-dot--notif { transform: translate(-50%, -50%) rotate(45deg); border-radius: 3px; width: 13px; height: 13px; background: #e0922a; }
 // TBA keeps the type's colour/shape but turns faded + dashed (submission vs notification stay distinct)
@@ -88,7 +89,7 @@
 
 .g-bar {
   position: absolute; top: 50%; transform: translateY(-50%); z-index: 1;
-  height: 12px; border-radius: 999px; min-width: 22px;
+  height: 12px; border-radius: 999px; min-width: 22px; cursor: pointer;
   background: #0f9d8f;
   box-shadow: 0 0 0 1.5px #fff, 0 1px 3px rgba(16,24,40,.2);
 }
@@ -98,6 +99,15 @@
 }
 
 .conf-hint { font-size: .8rem; color: $muted; margin: .6rem 0 0; }
+
+// custom marker tooltip (replaces the unreliable native title attribute)
+.conf-tip {
+  position: absolute; z-index: 200; max-width: 280px;
+  background: $ink; color: #fff; font-size: .8rem; line-height: 1.45;
+  padding: .45rem .65rem; border-radius: 6px; box-shadow: $shadow-lg;
+  pointer-events: none;
+}
+.conf-tip[hidden] { display: none; }
 
 @include sm {
   .gantt { --gantt-label: 96px; }
