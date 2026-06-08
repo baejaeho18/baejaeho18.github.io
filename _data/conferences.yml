@@ -83,8 +83,8 @@ venues:
     deadlines:
       - { date: "2025-11-20", label: "Fall",   notif: "2026-03-17" }
       - { date: "2026-04-29", label: "Spring", notif: "2026-08-04" }
-    conf_start: "2026-11-03"
-    conf_end: "2026-11-06"
+    conf_start: "2026-10-12"   # official IMC 2026 site (sec-deadlines lists Nov 3-6, which is stale)
+    conf_end: "2026-10-16"
 
   - name: "ASIA CCS"
     short: "AsiaCCS"
