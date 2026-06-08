@@ -9,11 +9,10 @@ about:
     I am **Jaeho Bae (배재호)**, an M.S. student in Computer Science and
     Engineering at **UNIST**. I love reading, learning, and programming.
   - >-
-    At the **Web Security (WebSec) Lab**, I work on **web security and
-    privacy** — analyzing **JavaScript** and web applications to uncover
-    vulnerabilities and protect users' personal data. I am also interested in
-    the interplay between **AI and security**. I previously studied AI and
-    Computer Science & Engineering at **Handong Global University**.
+    I work on **web security and privacy** to uncover vulnerabilities and
+    protect users' personal data. I am also interested in the interplay
+    between **AI and security**.
+#   I previously studied AI and Computer Science & Engineering at Handong Global University.
 
 # Research interests (chips on the homepage)
 interests:
@@ -33,7 +32,7 @@ education:
     location: Ulsan, South Korea
     start: "2025.03"
     end: "Present"
-    note: 'Web Security (WebSec) Lab — Advisor: <a href="https://seongil-wi.github.io/" target="_blank" rel="noopener">Seongil Wi</a>'
+    note: '<a href="https://websec-lab.github.io/" target="_blank" rel="noopener">Web Security (WebSec) Lab</a> — Advisor: <a href="https://seongil-wi.github.io/" target="_blank" rel="noopener">Seongil Wi</a>'
   - degree: B.S. in Artificial Intelligence · Computer Science and Engineering
     institution: Handong Global University
     location: Pohang, South Korea
@@ -132,9 +131,9 @@ publications:
   - title: "ByCoBERT: A Bytecode Pre-trained Model based Security Vulnerability Prediction Technique"
     title_ko: "ByCoBERT: Bytecode pre-trained 모델 기반 보안 취약점 예측 기법"
     authors: "Daeseok Kim, <strong>Jaeho Bae</strong>, Jooyoung Jang, Jaechang Nam"
-    venue: "Journal of KIISE (JOK)"
+    # venue: "Journal of KIISE (JOK)"
     year: 2026          # used only for ordering; hidden while under review
-    type: journal
+    # type: journal
     status: "Under review"
     url: ""
   - title: "Detecting Security Vulnerabilities Using a GPT Model"
