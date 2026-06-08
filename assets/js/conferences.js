@@ -67,6 +67,7 @@
     return {
       v: v, deadlines: dls, conf_start: cs, conf_end: ce,
       confEst: vEst || !!v.conf_tba,
+      rolled: vEst,            // projected from a past edition → location also tentative
       year: cs ? dayDate(cs).getFullYear() : v.year
     };
   });
@@ -88,7 +89,7 @@
   if (upEl) {
     upEl.innerHTML = upcoming.length ? upcoming.map(function (x) {
       var p = x.p, d = dday(x.inst);
-      var conf = '🎤 ' + (p.conf_start ? esc(fmtRangeNoYear(p.conf_start, p.conf_end)) + (p.confEst ? ' (TBA)' : '') : 'dates TBA') + (p.v.place && p.v.place !== 'TBA' ? ' · ' + esc(p.v.place) : '');
+      var conf = '🎤 ' + (p.conf_start ? esc(fmtRangeNoYear(p.conf_start, p.conf_end)) + (p.confEst ? ' (TBA)' : '') : 'dates TBA') + (!p.rolled && p.v.place && p.v.place !== 'TBA' ? ' · ' + esc(p.v.place) : '');
       var notif = x.notif ? '🔔 ' + esc(fmtRange(x.notif)) + (x.notifEst ? ' (TBA)' : '') : '🔔 notification TBA';
       var round = (x.label && x.label !== 'Full') ? ' <span class="conf-round">' + esc(x.label) + '</span>' : '';
       return '<a class="conf-card" href="' + esc(p.v.link) + '" target="_blank" rel="noopener">' +
@@ -145,7 +146,7 @@
       var estTip = e.est ? ' (TBA)' : '';
       var lbl = (e.label && e.label !== 'Full') ? ' (' + esc(e.label) + ')' : '';
       if (e.kind === 'conf') {
-        var where = (r.p.v.place && r.p.v.place !== 'TBA') ? ' · ' + esc(r.p.v.place) : '';
+        var where = (!r.p.rolled && r.p.v.place && r.p.v.place !== 'TBA') ? ' · ' + esc(r.p.v.place) : '';
         return '<span class="g-bar' + (e.est ? ' is-tba' : '') + '" tabindex="0" style="left:' + e.pos.toFixed(2) + '%;width:' + e.width.toFixed(2) + '%" ' +
           'data-tip="' + esc(r.p.v.short + ' ' + r.p.year) + ' · Conference · ' + esc(fmtRangeNoYear(e.date, e.end)) + estTip + where + '"></span>';
       }

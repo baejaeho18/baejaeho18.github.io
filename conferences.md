@@ -17,7 +17,7 @@ permalink: /conferences/
   <span><i class="lg lg--sub"></i> Submission deadline</span>
   <span><i class="lg lg--notif"></i> Notification</span>
   <span><i class="lg lg--conf"></i> Conference period</span>
-  <span><i class="lg lg--tba"></i> TBA</span>
+  <span><i class="lg lg--tba"></i> TBA (last year's date)</span>
 </div>
 <div id="conf-calendar" class="conf-calendar"></div>
 <p class="conf-hint">Rows are ordered by conference date. Blue circle = submission deadline, amber diamond = notification, green bar = conference period; a dashed (faded) marker means the date is still TBA — venues roll over to next year automatically once their conference passes. Hover (or tap) any marker for details.</p>

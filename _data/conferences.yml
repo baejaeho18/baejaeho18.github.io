@@ -65,13 +65,14 @@ venues:
   - name: "The Web Conference (WWW)"
     short: "WWW"
     rank: "A*"
-    year: 2026
-    link: "https://www2026.thewebconf.org"
-    place: "Dubai, United Arab Emirates"
+    year: 2027
+    link: "https://thewebconf.org/"
+    place: "Dublin, Ireland"        # WWW 2027 venue announced; dates not yet set
     deadlines:
-      - { date: "2025-10-07", label: "Full", notif: "2026-01-13" }
-    conf_start: "2026-04-13"
-    conf_end: "2026-04-17"
+      - { date: "2026-10-07", label: "Full", notif: "2027-01-13", tba: true, notif_tba: true }
+    conf_start: "2027-04-12"
+    conf_end: "2027-04-16"
+    conf_tba: true
 
   - name: "ACM IMC"
     short: "IMC"
