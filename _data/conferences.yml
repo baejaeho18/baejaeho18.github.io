@@ -20,8 +20,8 @@ venues:
     link: "https://sp2027.ieee-security.org/"
     place: "Montreal, Canada"
     deadlines:
-      - { date: "2026-06-11", label: "1st", notif: "2026-09-10", notif_tba: true }
-      - { date: "2026-11-17", label: "2nd", notif: "2027-02-16", notif_tba: true }
+      - { date: "2026-06-11", label: "1st", notif: "2026-09-11" }
+      - { date: "2026-11-17", label: "2nd", notif: "2027-03-05" }
     conf_start: "2027-05-17"
     conf_end: "2027-05-20"
     conf_tba: true
@@ -83,8 +83,8 @@ venues:
     deadlines:
       - { date: "2025-11-20", label: "Fall",   notif: "2026-03-17" }
       - { date: "2026-04-29", label: "Spring", notif: "2026-08-04" }
-    conf_start: "2026-10-12"
-    conf_end: "2026-10-16"
+    conf_start: "2026-11-03"
+    conf_end: "2026-11-06"
 
   - name: "ASIA CCS"
     short: "AsiaCCS"
