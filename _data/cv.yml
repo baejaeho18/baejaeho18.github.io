@@ -139,7 +139,7 @@ publications:
     title_ko: "ByCoBERT: Bytecode pre-trained 모델 기반 보안 취약점 예측 기법"
     authors: "Daeseok Kim, <strong>Jaeho Bae</strong>, Jooyoung Jang, Jaechang Nam"
     # venue: "Journal of KIISE (JOK)"
-    year: 2026          # used only for ordering; hidden while under review
+    year: 2025          # used only for ordering; hidden while under review
     # type: journal
     status: "Under review"
     url: ""
