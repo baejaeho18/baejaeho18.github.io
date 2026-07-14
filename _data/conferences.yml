@@ -69,7 +69,8 @@ venues:
     link: "https://acmweb2027.org/"
     place: "Dublin, Ireland"
     deadlines:
-      - { date: "2026-10-07", label: "Full", notif: "2027-01-13", tba: true, notif_tba: true }
+      # acmweb2027.org/important-dates: abstract Oct 11, full paper Oct 18 (AoE); result release Dec 10
+      - { date: "2026-10-18", label: "Full", notif: "2026-12-10" }
     conf_start: "2027-05-10"
     conf_end: "2027-05-14"
 
