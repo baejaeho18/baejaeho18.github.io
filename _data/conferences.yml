@@ -101,13 +101,14 @@ venues:
   - name: "Euro S&P"
     short: "EuroS&P"
     rank: "A"
-    year: 2026
-    link: "https://eurosp2026.ieee-security.org/"
-    place: "Lisbon, Portugal"
+    year: 2027
+    link: "https://eurosp2027.ieee-security.org/"
+    place: "Madrid, Spain"
     deadlines:
-      - { date: "2025-11-20", label: "Full", notif: "2026-03-05" }
-    conf_start: "2026-07-06"
-    conf_end: "2026-07-10"
+      - { date: "2026-11-20", label: "Full", notif: "2027-03-05", notif_tba: true }
+    conf_start: "2027-07-05"
+    conf_end: "2027-07-09"
+    conf_tba: true
 
   - name: "ESORICS"
     short: "ESORICS"
