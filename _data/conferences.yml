@@ -24,7 +24,6 @@ venues:
       - { date: "2026-11-17", label: "2nd", notif: "2027-03-05" }
     conf_start: "2027-05-17"
     conf_end: "2027-05-20"
-    conf_tba: true
 
   - name: "NDSS"
     short: "NDSS"
@@ -133,18 +132,8 @@ venues:
     conf_start: "2026-12-07"
     conf_end: "2026-12-11"
 
-  # ── Current-year editions whose conference itself is still upcoming. ──
-  # (Their submission deadlines already passed; listed conference-only so the
-  #  imminent event shows on the calendar alongside the next open cycle above.)
-  - name: "USENIX Security"
-    short: "USENIX Sec"
-    rank: "A*"
-    year: 2026
-    link: "https://www.usenix.org/conference/usenixsecurity26"
-    place: "Baltimore, MD, USA"
-    deadlines: []
-    conf_start: "2026-08-12"
-    conf_end: "2026-08-14"
   # AsiaCCS 2026 (Jun 1–5, Bangalore) has concluded; its 2027 edition
   # (Jul 12–16, Macau) is tracked by the main "ASIA CCS" entry above and will
   # enter the 12-month window automatically once it is < 12 months out.
+  # USENIX Security 2026 (Aug 12–14, Baltimore) has concluded; its 2027 edition
+  # (Aug 11–13, Denver) is tracked by the main "USENIX Security" entry above.
