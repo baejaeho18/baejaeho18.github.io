@@ -127,6 +127,8 @@ teaching:
 
 # ── Publications ─────────────────────────────────────────────────────────────
 # type: journal | conference
+# Keep this list ordered newest-first: both /publications/ and the home page
+# render it in file order.
 publications:
   - title: "PhishXGraph: Robust Phishing Website Detection using Cross-Layer Interaction Graphs (to appear)"
     authors: "<strong>Jaeho Bae</strong>, Junghoon Kim, Doowon Kim, Seongil Wi"
@@ -135,13 +137,13 @@ publications:
     type: conference
     selected: true
     url: ""
-  - title: "ByCoBERT: A Bytecode Pre-trained Model based Security Vulnerability Prediction Technique"
+  - title: "ByCoBERT: A Bytecode Pre-trained Model based Security Vulnerability Prediction Technique (to appear)"
     title_ko: "ByCoBERT: Bytecode pre-trained 모델 기반 보안 취약점 예측 기법"
     authors: "Daeseok Kim, <strong>Jaeho Bae</strong>, Jooyoung Jang, Jaechang Nam"
-    # venue: "Journal of KIISE (JOK)"
-    year: 2025          # used only for ordering; hidden while under review
-    # type: journal
-    status: "Under review"
+    venue: "KIISE Transactions on Computing Practices (KTCP)"
+    year: 2026
+    type: journal
+    selected: true
     url: ""
   - title: "Detecting Security Vulnerabilities Using a GPT Model"
     title_ko: "GPT 모델을 활용한 보안취약점 탐색"

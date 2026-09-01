@@ -5,8 +5,13 @@ subtitle: Peer-reviewed papers and articles.
 permalink: /publications/
 ---
 
-{% assign pubs = site.data.cv.publications %}
-{% assign byyear = pubs | sort: "year" | reverse %}
+{% comment %}
+  _data/cv.yml lists publications newest-first, so render them in file order.
+  A Liquid `sort: "year" | reverse` is unstable for equal years (two "to appear"
+  papers in the same year swap around) and would disagree with the home page,
+  which also renders in file order.
+{% endcomment %}
+{% assign byyear = site.data.cv.publications %}
 
 <ol class="pub-list">
 {% for pub in byyear %}
