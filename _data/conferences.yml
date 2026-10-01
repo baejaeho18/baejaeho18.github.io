@@ -56,8 +56,8 @@ venues:
     link: "https://www.usenix.org/conference/usenixsecurity27"
     place: "Denver, CO, USA"
     deadlines:
-      - { date: "2026-08-25", label: "Cycle 1", notif: "2026-12-04" }
-      - { date: "2027-01-26", label: "Cycle 2", notif: "2027-05-14" }
+      - { date: "2026-08-25", label: "Cycle 1", notif: "2026-12-03" }
+      - { date: "2027-01-26", label: "Cycle 2", notif: "2027-05-06" }
     conf_start: "2027-08-11"
     conf_end: "2027-08-13"
 
@@ -68,8 +68,8 @@ venues:
     link: "https://acmweb2027.org/"
     place: "Dublin, Ireland"
     deadlines:
-      # acmweb2027.org/important-dates: abstract Oct 11, full paper Oct 18 (AoE); result release Dec 10
-      - { date: "2026-10-18", label: "Full", notif: "2026-12-10" }
+      # acmweb2027.org/important-dates: abstract Oct 18, full paper Oct 25 (AoE); notification Jan 4 2027
+      - { date: "2026-10-25", label: "Full", notif: "2027-01-04" }
     conf_start: "2027-05-10"
     conf_end: "2027-05-14"
 
