@@ -104,10 +104,9 @@ venues:
     link: "https://eurosp2027.ieee-security.org/"
     place: "Madrid, Spain"
     deadlines:
-      - { date: "2026-11-20", label: "Full", notif: "2027-03-05", notif_tba: true }
+      - { date: "2026-12-02", label: "Full", notif: "2027-03-18" }
     conf_start: "2027-07-05"
     conf_end: "2027-07-09"
-    conf_tba: true
 
   - name: "ESORICS"
     short: "ESORICS"
