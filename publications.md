@@ -22,7 +22,6 @@ permalink: /publications/
     </p>
     <p class="pub__meta">{{ pub.authors }} · <em>{{ pub.venue }}</em>{% unless pub.status %}, {{ pub.year }}{% endunless %}{% if pub.note %} · <span class="pub__note">{{ pub.note }}</span>{% endif %}{% if pub.award %} · <span class="pub__award">🏆 {{ pub.award }}</span>{% endif %}</p>
     {% if pub.title_ko %}<p class="pub__meta" lang="ko">{{ pub.title_ko }}</p>{% endif %}
-    {% include pub-links.html pub=pub %}
   </li>
 {% endfor %}
 </ol>

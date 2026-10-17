@@ -85,12 +85,6 @@
 .pub__meta { color: $muted; font-size: .88rem; margin: 0; }
 .pub__award { color: $accent-dk; font-weight: 500; }
 .pub__note { color: $muted; }
-.pub__links { display: flex; flex-wrap: wrap; gap: .45rem; margin: .25rem 0 0; font-size: .76rem; }
-.pub__link {
-  font-weight: 500; color: $accent; text-decoration: none;
-  transition: color .15s ease;
-}
-.pub__link:hover, .pub__link:focus-visible { color: $accent-dk; text-decoration: underline; }
 
 // ── Cards / link grid ───────────────────────────────────
 .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
