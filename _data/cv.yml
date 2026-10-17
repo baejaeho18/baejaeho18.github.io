@@ -130,13 +130,19 @@ teaching:
 # Keep this list ordered newest-first: both /publications/ and the home page
 # render it in file order.
 publications:
-  - title: "PhishXGraph: Robust Phishing Website Detection using Cross-Layer Interaction Graphs (to appear)"
+  - title: "PhishXGraph: Robust Phishing Website Detection Using Cross-Layer Interaction Graphs"
     authors: "<strong>Jaeho Bae</strong>, Junghoon Kim, Doowon Kim, Seongil Wi"
-    venue: "European Symposium on Research in Computer Security (ESORICS)"
+    venue: "European Symposium on Research in Computer Security (ESORICS), LNCS 16968, pp. 491–512"
     year: 2026
     type: conference
     selected: true
-    url: ""
+    note: "Acceptance rate 14.74%"
+    url: "https://doi.org/10.1007/978-3-032-38692-2_25"
+    links:
+      # Springer holds an exclusive license to the published version, so this is
+      # the accepted manuscript (camera-ready), not the typeset Springer PDF.
+      - { label: "PDF", url: "/assets/papers/esorics2026-phishxgraph.pdf" }
+      - { label: "Code", url: "https://github.com/WebSec-Lab/PhishXGraph" }
   - title: "ByCoBERT: A Bytecode Pre-trained Model based Security Vulnerability Prediction Technique (to appear)"
     title_ko: "ByCoBERT: Bytecode pre-trained 모델 기반 보안 취약점 예측 기법"
     authors: "Daeseok Kim, <strong>Jaeho Bae</strong>, Jooyoung Jang, Jaechang Nam"

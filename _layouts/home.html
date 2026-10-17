@@ -47,7 +47,8 @@ layout: default
           <p class="pub__title">
             {%- if pub.url and pub.url != "" -%}<a href="{{ pub.url }}" target="_blank" rel="noopener">{{ pub.title }}</a>{%- else -%}{{ pub.title }}{%- endif -%}
           </p>
-          <p class="pub__meta">{{ pub.authors }} · <em>{{ pub.venue }}</em>, {{ pub.year }}{% if pub.award %} · <span class="pub__award">🏆 {{ pub.award }}</span>{% endif %}</p>
+          <p class="pub__meta">{{ pub.authors }} · <em>{{ pub.venue }}</em>, {{ pub.year }}{% if pub.note %} · <span class="pub__note">{{ pub.note }}</span>{% endif %}{% if pub.award %} · <span class="pub__award">🏆 {{ pub.award }}</span>{% endif %}</p>
+          {%- include pub-links.html pub=pub -%}
         </li>
         {%- endfor -%}
       </ol>
