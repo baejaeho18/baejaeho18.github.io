@@ -85,16 +85,12 @@
 .pub__meta { color: $muted; font-size: .88rem; margin: 0; }
 .pub__award { color: $accent-dk; font-weight: 500; }
 .pub__note { color: $muted; }
-.pub__links { display: flex; flex-wrap: wrap; gap: .4rem; margin: .4rem 0 0; }
+.pub__links { display: flex; flex-wrap: wrap; gap: .45rem; margin: .25rem 0 0; font-size: .76rem; }
 .pub__link {
-  display: inline-block; font-size: .78rem; font-weight: 600; line-height: 1;
-  padding: .35em .7em; border: 1px solid $line; border-radius: $radius-sm;
-  background: $bg-soft; color: $accent-dk; text-decoration: none;
-  transition: border-color .15s ease, background .15s ease, color .15s ease;
+  font-weight: 500; color: $accent; text-decoration: none;
+  transition: color .15s ease;
 }
-.pub__link:hover, .pub__link:focus-visible {
-  border-color: $brand; background: rgba($brand,.1); color: $accent-dk;
-}
+.pub__link:hover, .pub__link:focus-visible { color: $accent-dk; text-decoration: underline; }
 
 // ── Cards / link grid ───────────────────────────────────
 .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }

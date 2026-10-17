@@ -132,7 +132,7 @@ teaching:
 publications:
   - title: "PhishXGraph: Robust Phishing Website Detection Using Cross-Layer Interaction Graphs"
     authors: "<strong>Jaeho Bae</strong>, Junghoon Kim, Doowon Kim, Seongil Wi"
-    venue: "European Symposium on Research in Computer Security (ESORICS), LNCS 16968, pp. 491–512"
+    venue: "European Symposium on Research in Computer Security (ESORICS)"
     year: 2026
     type: conference
     selected: true
