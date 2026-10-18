@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Conferences
-subtitle: Top security venues (CORE A / A*) — deadlines, notifications & dates for the next 12 months.
+subtitle: Top security, privacy & software-engineering venues (CORE A / A*) — deadlines, notifications & dates for the next 12 months.
 permalink: /conferences/
 ---
 
@@ -23,7 +23,7 @@ permalink: /conferences/
 <p class="conf-hint">Rows are ordered by conference date. Blue circle = submission deadline, amber diamond = notification, green bar = conference period; a dashed (faded) marker means the date is still TBA — venues roll over to next year automatically once their conference passes. Hover (or tap) any marker for details.</p>
 </section>
 
-<p class="conf-source">Data adapted from <a href="https://sec-deadlines.github.io/" target="_blank" rel="noopener">sec-deadlines.github.io</a>. Deadlines are AoE (UTC−12); notification dates are shown when announced. Edit <code>_data/conferences.yml</code> to update.</p>
+<p class="conf-source">Data adapted from <a href="https://sec-deadlines.github.io/" target="_blank" rel="noopener">sec-deadlines.github.io</a> and <a href="https://se-deadlines.github.io/" target="_blank" rel="noopener">se-deadlines.github.io</a>. Deadlines are AoE (UTC−12); notification dates are shown when announced. Edit <code>_data/conferences.yml</code> to update.</p>
 
 <script id="conf-data" type="application/json">{{ site.data.conferences.venues | jsonify }}</script>
 <script src="{{ '/assets/js/conferences.js' | relative_url }}"></script>

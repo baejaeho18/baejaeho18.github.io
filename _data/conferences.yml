@@ -1,6 +1,7 @@
 # ──────────────────────────────────────────────────────────────────────────
-#  Top security venues (CORE rank A / A*) — deadline tracker.
-#  Sources: official CFPs + https://sec-deadlines.github.io/   (update each cycle)
+#  Top security, privacy & software-engineering venues (CORE rank A / A*).
+#  Sources: official CFPs + https://sec-deadlines.github.io/ (security) and
+#  https://se-deadlines.github.io/ (software engineering)   (update each cycle)
 #  Submission deadlines are AoE (Anywhere-on-Earth, UTC-12), 23:59.
 #  Each deadline round carries its own `notif` (author-notification date).
 #  Store the REAL announced dates for the current cycle. The page auto-rolls a
@@ -130,6 +131,61 @@ venues:
       - { date: "2026-05-26", label: "Full", notif: "2026-09-08" }
     conf_start: "2026-12-07"
     conf_end: "2026-12-11"
+
+  - name: "Privacy Enhancing Technologies Symposium"
+    short: "PETS"
+    rank: "A"
+    year: 2027
+    link: "https://petsymposium.org/cfp27.php"
+    place: "Delft, The Netherlands"
+    # PoPETs is a journal-style venue with four fixed issues a year; a paper goes
+    # to whichever issue it is submitted to. No per-issue notification date is
+    # published in the CFP, so `notif` is left off and renders as TBA.
+    deadlines:
+      - { date: "2026-05-31", label: "Issue 1" }
+      - { date: "2026-08-31", label: "Issue 2" }
+      - { date: "2026-11-30", label: "Issue 3" }
+      - { date: "2027-02-28", label: "Issue 4" }
+    conf_start: "2027-07-19"
+    conf_end: "2027-07-24"
+
+  # ── Software engineering (CORE A / A*) ──────────────────────────────────
+  # These track https://se-deadlines.github.io/ rather than sec-deadlines.
+  # `notif` is the first decision after submission (ICSE/FSE/ISSTA then run a
+  # revision round before the final notification), matching how NDSS/CCS are
+  # recorded above.
+  - name: "IEEE/ACM International Conference on Software Engineering"
+    short: "ICSE"
+    rank: "A*"
+    year: 2027
+    link: "https://conf.researchr.org/track/icse-2027/icse-2027-research-track"
+    place: "Dublin, Ireland"
+    deadlines:
+      - { date: "2026-06-30", label: "Full", notif: "2026-10-20" }
+    conf_start: "2027-04-25"
+    conf_end: "2027-05-01"
+
+  - name: "ACM International Conference on the Foundations of Software Engineering"
+    short: "FSE"
+    rank: "A*"
+    year: 2027
+    link: "https://conf.researchr.org/dates/fse-2027"
+    place: "Shenzhen, China"
+    deadlines:
+      - { date: "2026-10-02", label: "Full", notif: "2027-01-22" }
+    conf_start: "2027-07-12"
+    conf_end: "2027-07-16"
+
+  - name: "ACM SIGSOFT International Symposium on Software Testing and Analysis"
+    short: "ISSTA"
+    rank: "A"
+    year: 2027
+    link: "https://conf.researchr.org/track/issta-2027/issta-2027-research-papers"
+    place: "Singapore"
+    deadlines:
+      - { date: "2027-01-11", label: "Full", notif: "2027-04-20" }
+    conf_start: "2027-09-07"
+    conf_end: "2027-09-10"
 
   # AsiaCCS 2026 (Jun 1–5, Bangalore) has concluded; its 2027 edition
   # (Jul 12–16, Macau) is tracked by the main "ASIA CCS" entry above and will
