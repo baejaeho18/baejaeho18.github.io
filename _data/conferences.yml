@@ -77,14 +77,18 @@ venues:
   - name: "ACM IMC"
     short: "IMC"
     rank: "A"
-    year: 2026
-    link: "https://conferences.sigcomm.org/imc/2026/"
-    place: "Karlsruhe, Germany"
+    year: 2027
+    link: "https://conferences.sigcomm.org/imc/2027/"
+    place: "Atlanta, GA, USA"   # SIGCOMM steering-committee site list; confirm on the 2027 site
     deadlines:
-      - { date: "2025-11-20", label: "Fall",   notif: "2026-03-17" }
-      - { date: "2026-04-29", label: "Spring", notif: "2026-08-04" }
-    conf_start: "2026-10-12"   # official IMC 2026 site (sec-deadlines lists Nov 3-6, which is stale)
-    conf_end: "2026-10-16"
+      # Full-paper deadlines from the official IMC 2027 important-dates page.
+      # Abstract registration closes a week earlier (Nov 10 / Mar 31) and the
+      # one-shot-revision resubmissions (Dec 2 / Apr 28) are not new submissions.
+      # `notif` is the full notification, not the early-reject date (Jan 5 / May 19).
+      - { date: "2026-11-17", label: "Cycle 1", notif: "2027-02-25" }
+      - { date: "2027-04-07", label: "Cycle 2", notif: "2027-07-22" }
+    conf_start: "2027-10-25"
+    conf_end: "2027-10-29"
 
   - name: "ASIA CCS"
     short: "AsiaCCS"

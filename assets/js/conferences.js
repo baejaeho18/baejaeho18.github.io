@@ -153,7 +153,11 @@
       var lbl = (e.label && e.label !== 'Full') ? ' (' + esc(e.label) + ')' : '';
       if (e.kind === 'conf') {
         var where = (!r.p.rolled && r.p.v.place && r.p.v.place !== 'TBA') ? ' · ' + esc(r.p.v.place) : '';
-        return '<span class="g-bar' + (e.est ? ' is-tba' : '') + '" tabindex="0" style="left:' + e.pos.toFixed(2) + '%;width:' + e.width.toFixed(2) + '%" ' +
+        // A bar clamped to the right edge is anchored from the right: .g-bar has
+        // a 22px min-width, so a sliver positioned by `left` would be widened
+        // past the track and make the whole timeline scroll sideways.
+        var at = (e.pos + e.width >= 99.99) ? 'right:0' : 'left:' + e.pos.toFixed(2) + '%';
+        return '<span class="g-bar' + (e.est ? ' is-tba' : '') + '" tabindex="0" style="' + at + ';width:' + e.width.toFixed(2) + '%" ' +
           'data-tip="' + esc(r.p.v.short + ' ' + r.p.year) + ' · Conference · ' + esc(fmtRangeNoYear(e.date, e.end)) + estTip + where + '"></span>';
       }
       var sub = e.kind === 'sub';
