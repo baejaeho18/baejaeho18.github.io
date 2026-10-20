@@ -78,6 +78,12 @@ experience:
 # ── Teaching ────────────────────────────────────────────────────────────────
 teaching:
   - role: Teaching Assistant
+    course: Web Security
+    org: UNIST
+    start: "2026.09"
+    end: "2026.12"
+    url: "https://websec-lab.github.io/courses/2026f-cse480/"
+  - role: Teaching Assistant
     course: System Programming
     org: UNIST
     start: "2026.03"
