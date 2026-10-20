@@ -41,7 +41,10 @@
 .gantt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid $line; border-radius: $radius; }
 .gantt {
   --gantt-label: 120px;
-  min-width: 720px;
+  --gantt-span: 12;   // month columns; conferences.js overrides this
+  // Must stay under the ~734px content column so the 13th month is not cut off
+  // on desktop; narrower viewports scroll the track horizontally instead.
+  min-width: 700px;
   position: relative;
   background: $bg;
 }
@@ -54,7 +57,7 @@
   span { font-weight: 600; color: $ink; white-space: nowrap; }
 }
 
-.gantt__months { display: grid; grid-template-columns: repeat(12, 1fr); }
+.gantt__months { display: grid; grid-template-columns: repeat(var(--gantt-span), 1fr); }
 .gantt__m {
   text-align: center; font-size: .72rem; color: $muted; padding: .35rem 0; line-height: 1.2;
   border-left: 1px solid $line;
@@ -69,8 +72,8 @@
 .gantt__track {
   position: relative; height: 34px;
   background-image: repeating-linear-gradient(to right,
-    transparent, transparent calc(100% / 12 - 1px),
-    $line calc(100% / 12 - 1px), $line calc(100% / 12));
+    transparent, transparent calc(100% / var(--gantt-span) - 1px),
+    $line calc(100% / var(--gantt-span) - 1px), $line calc(100% / var(--gantt-span)));
 }
 
 // markers — distinct by shape AND a calm, coordinated palette:

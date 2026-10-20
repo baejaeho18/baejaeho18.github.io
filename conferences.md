@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Conferences
-subtitle: Top security, privacy & software-engineering venues (CORE A / A*) — deadlines, notifications & dates for the next 12 months.
+subtitle: Top security, privacy & software-engineering venues (CORE A / A*) — deadlines, notifications & dates for the year ahead.
 permalink: /conferences/
 ---
 
@@ -12,7 +12,7 @@ permalink: /conferences/
 </section>
 
 <section class="section">
-<h2 class="section__title">Next 12 months</h2>
+<h2 class="section__title">The year ahead</h2>
 <div class="conf-legend">
   <span><i class="lg lg--sub"></i> Submission deadline</span>
   <span><i class="lg lg--notif"></i> Notification</span>

@@ -105,15 +105,21 @@
   var calEl = document.getElementById('conf-calendar');
   if (!calEl) return;
 
+  // The grid spans 13 months, not 12. A venue rolls forward a whole year once
+  // its conference ends, so one held in the CURRENT month lands ~12 months out
+  // — just past the right edge of a 12-month grid. Its row would then draw the
+  // deadline dots but silently drop the conference bar (IMC, held mid-October,
+  // vanished every October). 13 columns keep that final month on screen.
+  var SPAN = 13;
   var startY = now.getFullYear(), startM = now.getMonth();
-  var winStart = new Date(startY, startM, 1), winEnd = new Date(startY, startM + 12, 1);
+  var winStart = new Date(startY, startM, 1), winEnd = new Date(startY, startM + SPAN, 1);
   function inWin(d) { var x = dayDate(d); return x >= winStart && x < winEnd; }
   function monthsSince(x) { return (x.getFullYear() - startY) * 12 + (x.getMonth() - startM); }
   function daysInMonth(x) { return new Date(x.getFullYear(), x.getMonth() + 1, 0).getDate(); }
   function posOf(dateStr, endOfDay) {
     var x = dayDate(dateStr);
     var frac = ((x.getDate() - 1) + (endOfDay ? 1 : 0)) / daysInMonth(x);
-    return Math.max(0, Math.min(100, (monthsSince(x) + frac) / 12 * 100));
+    return Math.max(0, Math.min(100, (monthsSince(x) + frac) / SPAN * 100));
   }
 
   var rows = [];
@@ -135,7 +141,7 @@
 
   // header months
   var head = '<div class="gantt__row gantt__row--head"><div class="gantt__label"></div><div class="gantt__track gantt__months">';
-  for (var i = 0; i < 12; i++) {
+  for (var i = 0; i < SPAN; i++) {
     var d = new Date(startY, startM + i, 1);
     head += '<div class="gantt__m"><span>' + MONTHS[d.getMonth()] + '</span>' + ((i === 0 || d.getMonth() === 0) ? '<small>' + d.getFullYear() + '</small>' : '') + '</div>';
   }
@@ -160,7 +166,7 @@
            '<div class="gantt__track">' + marks + '</div></div>';
   }).join('');
 
-  calEl.innerHTML = '<div class="gantt-scroll"><div class="gantt">' + head +
+  calEl.innerHTML = '<div class="gantt-scroll"><div class="gantt" style="--gantt-span:' + SPAN + '">' + head +
     '<div class="gantt__body">' + (body || '<div class="conf-empty" style="padding:1rem">No events in this window.</div>') + '</div>' +
     '</div></div>';
 
