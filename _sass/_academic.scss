@@ -83,7 +83,7 @@
 .pub { margin-bottom: 1.1rem; }
 .pub__title { font-weight: 600; color: $ink; margin: 0 0 .2rem; }
 .pub__meta { color: $muted; font-size: .88rem; margin: 0; }
-.pub__award { color: $accent-dk; font-weight: 500; }
+.award-tag { color: $accent-dk; font-weight: 500; }
 .pub__note { color: $muted; }
 
 // ── Cards / link grid ───────────────────────────────────
@@ -108,6 +108,9 @@
   p { font-size: .9rem; color: $muted; flex: 1; }
 }
 .proj-card:hover { transform: translateY(-3px); box-shadow: $shadow; }
+// the card is a flex column whose description `p` takes `flex: 1` to push the
+// tags down; the award line must not share that stretch
+.proj-card__award { flex: 0 0 auto; margin: .6rem 0 0; font-size: .85rem; }
 .proj-card__tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .6rem; }
 
 // awards

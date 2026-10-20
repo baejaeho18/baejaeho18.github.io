@@ -73,7 +73,8 @@ experience:
     start: "2019.12"
     end: "2021.06"
     type: military
-    summary: Military service in a cyber response unit. Awarded as an exemplary serviceman.
+    summary: Military service in a cyber response unit.
+    award: Outstanding Service Member
 
 # ── Teaching ────────────────────────────────────────────────────────────────
 teaching:
@@ -115,6 +116,7 @@ teaching:
     org: Handong Global University
     start: "2023.03"
     end: "2023.12"
+    award: Outstanding Teaching Assistant
   - role: Teaching Assistant
     course: Java Programming
     org: Handong Global University
@@ -174,6 +176,7 @@ publications:
 projects:
   - name: ByCoBERT
     description: Project-level vulnerability prediction model using BERT on bytecode.
+    award: Capstone Festival — Excellence Award
     tags: [Security, BERT, Bytecode]
     url: "https://github.com/ISEL-HGU/ByCoBERT"
   - name: VIChecker
@@ -198,19 +201,19 @@ awards:
   - title: TOPCIT Regular Assessment — Grand Prize (최우수상)
     org: Handong Global University
     year: 2024
-  - title: Coding Hour — Outstanding TA (우수TA)
+  - title: Coding Hour — Outstanding Teaching Assistant (우수TA)
     org: Handong Global University
     year: 2023
-  - title: Capstone Festival — 'Capstone 2' (Graduation Project) Excellence Award (우수상)
+  - title: Capstone Festival — Excellence Award (우수상)
     org: Handong Global University
     year: 2023
   - title: Outstanding Undergraduate Paper Award (학부생부문 우수논문상)
     org: Korea Conference on Software Engineering (KCSE 2023)
     year: 2023
-  - title: Exemplary Serviceman (우수 장병)
+  - title: Outstanding Service Member (우수장병)
     org: Navy Cyber Operation Center · CERT
     year: 2021
-  - title: Freshman Coding Competition — Bronze (신입생부문 동상)
+  - title: Coding Competition — Bronze Prize, Freshman Division (신입생부문 동상)
     org: Handong Global University
     year: 2017
 

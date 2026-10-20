@@ -17,7 +17,7 @@ redirect_from:
 <section class="subpanel is-active" data-panel="experience">
 {% assign exp = site.data.cv.experience %}
 <ul class="timeline">
-{% for e in exp %}<li class="timeline__item"><div class="timeline__date">{{ e.start }} – {{ e.end }}</div><div class="timeline__body"><h3 class="timeline__head">{{ e.role }}{% if e.type %}<span class="timeline__badge">{{ e.type }}</span>{% endif %}</h3><p class="timeline__sub">{% if e.url and e.url != "" %}<a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.org }}</a>{% else %}{{ e.org }}{% endif %}{% if e.advisor %} <span class="timeline__advisor">(Advisor: {% if e.advisor_url %}<a href="{{ e.advisor_url }}" target="_blank" rel="noopener">{{ e.advisor }}</a>{% else %}{{ e.advisor }}{% endif %})</span>{% endif %}</p>{% if e.summary and e.summary != "" %}<p class="timeline__note">{{ e.summary }}</p>{% endif %}</div></li>
+{% for e in exp %}<li class="timeline__item"><div class="timeline__date">{{ e.start }} – {{ e.end }}</div><div class="timeline__body"><h3 class="timeline__head">{{ e.role }}{% if e.type %}<span class="timeline__badge">{{ e.type }}</span>{% endif %}</h3><p class="timeline__sub">{% if e.url and e.url != "" %}<a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.org }}</a>{% else %}{{ e.org }}{% endif %}{% if e.advisor %} <span class="timeline__advisor">(Advisor: {% if e.advisor_url %}<a href="{{ e.advisor_url }}" target="_blank" rel="noopener">{{ e.advisor }}</a>{% else %}{{ e.advisor }}{% endif %})</span>{% endif %}{% if e.award %} · <span class="award-tag">🏆 {{ e.award }}</span>{% endif %}</p>{% if e.summary and e.summary != "" %}<p class="timeline__note">{{ e.summary }}</p>{% endif %}</div></li>
 {% endfor %}
 </ul>
 </section>
@@ -27,7 +27,7 @@ redirect_from:
 {% for g in grouped %}
 <h3 class="cv-year">{{ g.name }}</h3>
 <ul class="timeline">
-{% for t in g.items %}<li class="timeline__item"><div class="timeline__date">{{ t.start }} – {{ t.end }}</div><div class="timeline__body"><h3 class="timeline__head">{% if t.url %}<a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.course }}</a>{% else %}{{ t.course }}{% endif %}</h3><p class="timeline__sub">{{ t.role }} · {{ t.org }}</p></div></li>
+{% for t in g.items %}<li class="timeline__item"><div class="timeline__date">{{ t.start }} – {{ t.end }}</div><div class="timeline__body"><h3 class="timeline__head">{% if t.url %}<a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.course }}</a>{% else %}{{ t.course }}{% endif %}</h3><p class="timeline__sub">{{ t.role }} · {{ t.org }}{% if t.award %} · <span class="award-tag">🏆 {{ t.award }}</span>{% endif %}</p></div></li>
 {% endfor %}</ul>
 {% endfor %}
 </section>
@@ -35,7 +35,7 @@ redirect_from:
 <section class="subpanel" data-panel="projects">
 {% assign projects = site.data.cv.projects %}
 <div class="proj-grid">
-{% for p in projects %}<div class="proj-card"><h3>{% if p.url and p.url != "" %}<a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}</h3><p>{{ p.description }}</p>{% if p.tags %}<div class="proj-card__tags">{% for tag in p.tags %}<span class="chip">{{ tag }}</span>{% endfor %}</div>{% endif %}</div>
+{% for p in projects %}<div class="proj-card"><h3>{% if p.url and p.url != "" %}<a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}</h3><p>{{ p.description }}</p>{% if p.award %}<p class="proj-card__award"><span class="award-tag">🏆 {{ p.award }}</span></p>{% endif %}{% if p.tags %}<div class="proj-card__tags">{% for tag in p.tags %}<span class="chip">{{ tag }}</span>{% endfor %}</div>{% endif %}</div>
 {% endfor %}
 </div>
 </section>
