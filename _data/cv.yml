@@ -146,10 +146,10 @@ publications:
     selected: true
     note: "Acceptance rate 14.74%"
     url: "https://doi.org/10.1007/978-3-032-38692-2_25"
-  - title: "ByCoBERT: A Bytecode Pre-trained Model based Security Vulnerability Prediction Technique (to appear)"
+  - title: "ByCoBERT: A Bytecode Pre-trained Model based Security Vulnerability Prediction Technique"
     title_ko: "ByCoBERT: Bytecode pre-trained 모델 기반 보안 취약점 예측 기법"
     authors: "Daeseok Kim, <strong>Jaeho Bae</strong>, Jooyoung Jang, Jaechang Nam"
-    venue: "KIISE Transactions on Computing Practices (KTCP)"
+    venue: "KIISE Transactions on Computing Practices (KTCP), Vol. 32, No. 11"
     year: 2026
     type: journal
     selected: true
