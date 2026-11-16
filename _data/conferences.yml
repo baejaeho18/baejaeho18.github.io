@@ -33,8 +33,8 @@ venues:
     link: "https://www.ndss-symposium.org/ndss2027/submissions/call-for-papers/"
     place: "Seoul, Republic of Korea"
     deadlines:
-      - { date: "2026-05-06", label: "Summer", notif: "2026-07-22" }
-      - { date: "2026-08-19", label: "Fall",   notif: "2026-11-04" }
+      - { date: "2026-05-06", label: "Summer", notif: "2026-07-29" }
+      - { date: "2026-08-19", label: "Fall",   notif: "2026-12-02" }
     conf_start: "2027-03-22"
     conf_end: "2027-03-26"
 
@@ -79,7 +79,7 @@ venues:
     rank: "A"
     year: 2027
     link: "https://conferences.sigcomm.org/imc/2027/"
-    place: "Atlanta, GA, USA"   # SIGCOMM steering-committee site list; confirm on the 2027 site
+    place: "Atlanta, GA, USA"
     deadlines:
       # Full-paper deadlines from the official IMC 2027 important-dates page.
       # Abstract registration closes a week earlier (Nov 10 / Mar 31) and the
@@ -143,13 +143,13 @@ venues:
     link: "https://petsymposium.org/cfp27.php"
     place: "Delft, The Netherlands"
     # PoPETs is a journal-style venue with four fixed issues a year; a paper goes
-    # to whichever issue it is submitted to. No per-issue notification date is
-    # published in the CFP, so `notif` is left off and renders as TBA.
+    # to whichever issue it is submitted to. `notif` is each issue's author
+    # notification from the CFP (a revision round follows).
     deadlines:
-      - { date: "2026-05-31", label: "Issue 1" }
-      - { date: "2026-08-31", label: "Issue 2" }
-      - { date: "2026-11-30", label: "Issue 3" }
-      - { date: "2027-02-28", label: "Issue 4" }
+      - { date: "2026-05-31", label: "Issue 1", notif: "2026-08-01" }
+      - { date: "2026-08-31", label: "Issue 2", notif: "2026-11-01" }
+      - { date: "2026-11-30", label: "Issue 3", notif: "2027-02-01" }
+      - { date: "2027-02-28", label: "Issue 4", notif: "2027-05-01" }
     conf_start: "2027-07-19"
     conf_end: "2027-07-24"
 
