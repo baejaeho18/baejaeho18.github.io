@@ -41,14 +41,14 @@ venues:
   - name: "ACM CCS"
     short: "CCS"
     rank: "A*"
-    year: 2026
-    link: "https://www.sigsac.org/ccs/CCS2026/"
-    place: "The Hague, The Netherlands"
+    year: 2027
+    link: "https://www.sigsac.org/ccs/CCS2027/"
+    place: "Atlanta, GA, USA"
     deadlines:
-      - { date: "2026-01-14", label: "1st", notif: "2026-04-09" }
-      - { date: "2026-04-29", label: "2nd", notif: "2026-07-17" }
-    conf_start: "2026-11-15"
-    conf_end: "2026-11-19"
+      - { date: "2027-01-14", tba: true, label: "1st", notif: "2027-04-09", notif_tba: true }
+      - { date: "2027-05-05", tba: true, label: "2nd", notif: "2027-07-15", notif_tba: true }
+    conf_start: "2027-10-11"
+    conf_end: "2027-10-15"
 
   - name: "USENIX Security"
     short: "USENIX Sec"
