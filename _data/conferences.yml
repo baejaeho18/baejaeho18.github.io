@@ -66,7 +66,7 @@ venues:
     short: "WWW"
     rank: "A*"
     year: 2027
-    link: "https://acmweb2027.org/"
+    link: "https://www2027.thewebconf.org/"
     place: "Dublin, Ireland"
     deadlines:
       # acmweb2027.org/important-dates: abstract Oct 18, full paper Oct 25 (AoE); notification Jan 4 2027
